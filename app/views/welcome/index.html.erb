@@ -1,0 +1,6 @@
+<h1>Volunteer Management System</h1>
+
+<%= link_to "Sign Up", new_user_registration_path %><br />
+<%= link_to "Sign In", user_session_path %><br />
+<%= link_to('Sign In with Facebook', '/auth/facebook') %><br />
+<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
