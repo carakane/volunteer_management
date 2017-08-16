@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+
+    def has_organizations?
+      self.organizations.present?
+    end
 end
