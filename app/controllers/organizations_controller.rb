@@ -1,8 +1,6 @@
 class OrganizationsController < ApplicationController
 
   def index
-    # binding.pry
-    # current_user.organizations
     if current_user.has_organizations?
       @organizations = current_user.organizations
     else
@@ -22,6 +20,22 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+  end
+
+  def edit
+    @organization = Organization.find(params[:id])
+  end
+
+  def update
+    @organization = Organization.find(params[:id])
+    @organization.update(organization_params)
+    redirect_to organization_path(@organization)
+  end
+
+  def destroy
+    @organization = Organization.find(params[:id])
+    @organization.destroy
+    redirect_to organizations_path
   end
 
   private
