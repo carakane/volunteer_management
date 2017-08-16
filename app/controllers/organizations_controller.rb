@@ -1,4 +1,5 @@
 class OrganizationsController < ApplicationController
+  before_action :find_organization, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user.has_organizations?
@@ -19,28 +20,28 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = Organization.find(params[:id])
   end
 
   def edit
-    @organization = Organization.find(params[:id])
   end
 
   def update
-    @organization = Organization.find(params[:id])
     @organization.update(organization_params)
     redirect_to organization_path(@organization)
   end
 
   def destroy
-    @organization = Organization.find(params[:id])
     @organization.destroy
     redirect_to organizations_path
   end
 
   private
 
-      def organization_params
-        params.require(:organization).permit(:name)
-      end
+    def find_organization
+      @organization = Organization.find(params[:id])
+    end
+
+    def organization_params
+      params.require(:organization).permit(:name)
+    end
 end
