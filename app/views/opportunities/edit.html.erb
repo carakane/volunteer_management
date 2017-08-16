@@ -1,0 +1,8 @@
+<%= form_for @opportunity do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+  <!-- :organization_id, :volunteer_id -->
+  <%= f.submit %>
+<% end %>

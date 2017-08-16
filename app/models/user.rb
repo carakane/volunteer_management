@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     def has_organizations?
       self.organizations.present?
     end
+
+    def has_opportunities?
+      self.opportunities.present?
+    end
 end

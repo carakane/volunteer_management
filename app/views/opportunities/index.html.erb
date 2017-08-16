@@ -1,0 +1,3 @@
+<% @opportunities.each do |opportunity| %>
+  <%= link_to "#{opportunity.name}", opportunity_path(opportunity) %>
+<% end %>

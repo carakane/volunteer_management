@@ -1,0 +1,8 @@
+<%= @opportunity.name %><br />
+<%= button_to "Edit", edit_opportunity_path, :method => 'get' %>
+<%= button_to "Delete", opportunity_path(@opportunity), :method => 'delete' %>
+
+<%= link_to "Organizations", organizations_path %> ||
+<%= link_to "Opportunities", opportunities_path %> ||
+<%= link_to "Volunteers", volunteers_path %> ||
+<%= link_to "User Home Page", user_path(current_user) %>
