@@ -2,11 +2,15 @@ class OrganizationsController < ApplicationController
   before_action :find_organization, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.has_organizations?
-      @organizations = current_user.organizations
+    if params[:user_id]
+      if current_user.has_organizations?
+        @organizations = current_user.organizations
+      else
+        flash[:notice] = "You have no organizations."
+        redirect_to new_user_organization_path
+      end
     else
-      flash[:notice] = "You have no organizations."
-      redirect_to new_organization_path
+      @organizations = Organization.all
     end
   end
 
@@ -27,12 +31,12 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization.update(organization_params)
-    redirect_to organization_path(@organization)
+    redirect_to user_organization_path(current_user, @organization)
   end
 
   def destroy
     @organization.destroy
-    redirect_to organizations_path
+    redirect_to user_organizations_path(current_user)
   end
 
   private
