@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   resources :organizations
 
+  resources :organizations, only: [:show] do
+    resources :opportunities, only: [:index, :show, :edit, :destroy, :new]
+  end
+
   resources :volunteers
 
   resources :users, only: :show
-  # do
-  #   resources :organizations, only: [:index, :show, :edit, :destroy, :new]
-  # end
 
   root 'welcome#index'
 

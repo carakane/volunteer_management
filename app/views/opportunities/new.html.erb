@@ -3,6 +3,7 @@
   <%= f.text_field :name %>
   <%= f.label :status %>
   <%= f.text_field :status %>
+  <%= f.collection_select :organization_id, current_user.organizations.all, :id, :name %>
   <!-- :organization_id, :volunteer_id -->
   <%= f.submit %>
 <% end %>
