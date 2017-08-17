@@ -1,8 +1,3 @@
 <%= @organization.name %><br />
 <%= button_to "Edit", edit_user_organization_path(current_user, @organization), :method => 'get' %>
 <%= button_to "Delete", user_organization_path(current_user, @organization), :method => 'delete' %>
-
-<%= link_to "Organizations", user_organizations_path(current_user) %> ||
-<%= link_to "Opportunities", opportunities_path %> ||
-<%= link_to "Volunteers", volunteers_path %> ||
-<%= link_to "User Home Page", user_path(current_user) %>

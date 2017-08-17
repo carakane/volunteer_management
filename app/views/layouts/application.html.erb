@@ -12,13 +12,24 @@
   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
   <h1>Volunteer Management System</h1>
-  <%= link_to "Sign Up", new_user_registration_path %> ||
-  <%= link_to "Sign In", user_session_path %> ||
-  <%= link_to "Sign In With Facebook", user_facebook_omniauth_authorize_path %> ||
-  <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+  <% if current_user.present? %>
+    <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path %> ||
+      <%= link_to "Sign In", user_session_path %> ||
+      <%= link_to "Sign In With Facebook", user_facebook_omniauth_authorize_path %>
+    <% end %>
   <br /><br />
 
 <%= yield %>
+
+  <% if current_user.present? %>
+  <br /><br />
+  <%= link_to "Organizations", user_organizations_path(current_user) %> ||
+  <%= link_to "Opportunities", opportunities_path %> ||
+  <%= link_to "Volunteers", volunteers_path %> ||
+  <%= link_to "User Home Page", user_path(current_user) %>
+  <% end %>
 
 </body>
 </html>

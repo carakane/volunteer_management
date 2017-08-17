@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     session[:user_id] = @user.id
 
-    # render 'user/show'
+    #  render 'user/show'
   end
 
   private
