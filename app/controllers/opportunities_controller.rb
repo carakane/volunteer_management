@@ -15,18 +15,12 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    #must make opportunities nested under orgs
-    # binding.pry
     @organization = Organization.find(params[:opportunity][:organization_id])
     @opportunity = @organization.opportunities.create(opportunity_params)
     redirect_to organization_opportunity_path(@organization, @opportunity)
   end
-#
-#   ActiveRecord::HasManyThroughCantAssociateThroughHasOneOrManyReflection: Cannot modify association 'User#opportunities' because the source refle
-# ction class 'Opportunity' is associated to 'Organization' via :has_many.
 
   def show
-    # binding.pry
     @opportunity = Opportunity.find(params[:id])
     @organization = Organization.find(@opportunity.organization_id)
 

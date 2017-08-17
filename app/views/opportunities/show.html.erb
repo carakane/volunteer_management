@@ -1,3 +1,4 @@
 <%= @opportunity.name %><br />
+<%= @opportunity.status %><br />
 <%= button_to "Edit", edit_organization_opportunity_path(@organization, @opportunity), :method => 'get' %>
 <%= button_to "Delete", organization_opportunity_path(@organization, @opportunity), :method => 'delete' %>
