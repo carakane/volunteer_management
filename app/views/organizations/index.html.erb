@@ -1,5 +1,5 @@
 <% @organizations.each do |organization| %>
-  <%= link_to "#{organization.name}", user_organization_path(current_user, organization) %>
+  <%= link_to "#{organization.name}", organization_path(organization) %>
 <% end %>
 <br />
 <%= link_to "Create an Organization", new_organization_path %>

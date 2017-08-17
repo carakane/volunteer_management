@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :volunteers
 
-  resources :users, only: :show do
-    resources :organizations, only: [:index, :show, :edit, :destroy, :new]
-  end
+  resources :users, only: :show
+  # do
+  #   resources :organizations, only: [:index, :show, :edit, :destroy, :new]
+  # end
 
   root 'welcome#index'
 

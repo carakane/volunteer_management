@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
         @organizations = current_user.organizations
       else
         flash[:notice] = "You have no organizations."
-        redirect_to new_user_organization_path
+        redirect_to new_organization_path
       end
     else
       @organizations = Organization.all
@@ -31,12 +31,12 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization.update(organization_params)
-    redirect_to user_organization_path(current_user, @organization)
+    redirect_to organization_path(@organization)
   end
 
   def destroy
     @organization.destroy
-    redirect_to user_organizations_path(current_user)
+    redirect_to organizations_path
   end
 
   private
