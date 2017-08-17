@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817140538) do
+ActiveRecord::Schema.define(version: 20170817163202) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "volunteer_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170817140538) do
     t.string   "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "day"
   end
 
   create_table "organizations", force: :cascade do |t|

@@ -22,19 +22,20 @@ end
     user_id: Faker::Number.between(1, 10)
   )
   Opportunity.create(
-    name: Faker::Company.profession,
+    name: Faker::Job.title,
     organization_id: Faker::Number.between(1, 10),
     volunteer_id: Faker::Number.between(1, 10),
+    day: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].sample,
     status: ["open", "assigned", "completed"].sample
   )
   Availability.create(
-  volunteer_id: Faker::Number.between(1, 10)
-  monday: ["true", "false"].sample
-  tuesday: ["true", "false"].sample
-  wednesday: ["true", "false"].sample
-  thursday: ["true", "false"].sample
-  friday: ["true", "false"].sample
-  saturday: ["true", "false"].sample
+  volunteer_id: Faker::Number.between(1, 10),
+  monday: ["true", "false"].sample,
+  tuesday: ["true", "false"].sample,
+  wednesday: ["true", "false"].sample,
+  thursday: ["true", "false"].sample,
+  friday: ["true", "false"].sample,
+  saturday: ["true", "false"].sample,
   sunday: ["true", "false"].sample
   )
 end
