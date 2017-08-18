@@ -12,6 +12,10 @@ class OpportunitiesController < ApplicationController
 
   def new
     @opportunity = Opportunity.new
+    @user = current_user
+    if params[:organization_id].present?
+      @organization = Organization.find(params[:organization_id])
+    end
   end
 
   def create
@@ -27,6 +31,10 @@ class OpportunitiesController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    if params[:organization_id].present?
+      @organization = Organization.find(params[:organization_id])
+    end
   end
 
   def update

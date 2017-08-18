@@ -4,7 +4,7 @@ class Opportunity < ActiveRecord::Base
   validates :name, presence: true
   validates :organization_id, presence: true
   enum status: [:open, :assigned, :completed]
-  #enum status: {new: 0, assigned: 1, completed: 2}
+  #enum status: {open: 0, assigned: 1, completed: 2}
 
   def self.open_opportunities
     Opportunity.where("status <> ?", Opportunity.statuses[:open])
