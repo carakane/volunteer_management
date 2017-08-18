@@ -1,3 +1,11 @@
+<h2>Opportunities</h2>
 <% @opportunities.each do |opportunity| %>
-  <%= link_to "#{opportunity.name}", organization_opportunity_path(current_organization, opportunity) %>
+  Name: <%= link_to "#{opportunity.name}", organization_opportunity_path(opportunity.organization, opportunity) %> ||
+  Organization: <%= opportunity.organization.name %> ||
+  Status: <%= opportunity.status.titleize %>
+  <% if opportunity.status != "open" %>
+    || Volunteer: <%= opportunity.volunteer %>
+    <% end %>
+    <br />
+  <br />
 <% end %>

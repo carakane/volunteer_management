@@ -2,7 +2,8 @@ class OrganizationsController < ApplicationController
   before_action :find_organization, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:user_id]
+    # binding.pry
+    if current_user.present?
       if current_user.has_organizations?
         @organizations = current_user.organizations
       else
