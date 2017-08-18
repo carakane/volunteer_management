@@ -7,9 +7,23 @@ class Opportunity < ActiveRecord::Base
   enum day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
   #enum status: {open: 0, assigned: 1, completed: 2}
 
-  def self.open_opportunities
-    Opportunity.where("status <> ?", Opportunity.statuses[:open])
-  end
+  scope :by_volunteer, -> volunteer_id {where(volunteer_id: volunteer)}
+  scope :by_organization, -> organization_id {where(organization_id: organization)}
+  #
+  # def self.open_opportunities
+  #   where("status = ?", self.statuses[:open])
+  # end
+  #
+  # def self.completed_opportunities
+  #   where("status = ?", self.statuses[:completed])
+  # end
+  #
+  # def self.assigned_opportunities
+  #   where("status = ?", self.statuses[:assigned])
+  # end
+  #
+  # def self.which_volunteers
+  # end
 
   def opportunity_match?
     @volunteers = []
