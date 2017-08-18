@@ -26,6 +26,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @user = current_user
+    @opportunities = @organization.opportunities if @organization.opportunities
   end
 
   def edit
