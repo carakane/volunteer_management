@@ -1,3 +1,10 @@
 <%= @organization.name %><br />
 <%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>
 <%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
+<br />
+<% if @opportunities %>
+  Opportunities
+  <%= link_to "#{@opportunities.name}", organization_opportunity_path(@organization, @opportunity) %>
+<% else %>
+  <%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization) %>
+<% end %>

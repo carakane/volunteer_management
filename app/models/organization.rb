@@ -5,6 +5,3 @@ class Organization < ActiveRecord::Base
   validates :name, presence: true
 
 end
-
-
-# Cart.most_valuable.by_customer(@customer)
