@@ -10,10 +10,12 @@ ToDo
 
 <!-- 5) user will click on an organization and then want to see opportunities for that org at the same time -->
 
-6) when user views opportunities will want to be able to assign the opportunity to an available volunteer
+<!-- 6) when user views opportunity will want to be able to assign the opportunity to an available volunteer -->
 
-7) an available volunteer consists of same day free and no open opportunities
+<!-- 7) an available volunteer consists of same day free and no open opportunities -->
 
 <!-- 8) need a way to adjust opportunity status -->
 
 <!-- 9) opportunity status needs to be a drop down -->
+
+10) is volunteer pool specific to user? to org? or to whole app?

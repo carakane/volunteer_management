@@ -15,8 +15,7 @@ class Opportunity < ActiveRecord::Base
     @volunteers = []
     a = Availability.where("#{self.day}": "true")
     a.each do |av|
-      # binding.pry
-      @volunteers << av.volunteer
+      @volunteers << av.volunteer unless av.volunteer.opportunities.pluck(:status) == [1]
     end
     @volunteers
 end
