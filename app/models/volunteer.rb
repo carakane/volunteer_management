@@ -14,4 +14,6 @@ class Volunteer < ActiveRecord::Base
       self.availability = availability
     end
   end
+
+
 end

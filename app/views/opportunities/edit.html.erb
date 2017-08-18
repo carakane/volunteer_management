@@ -9,6 +9,7 @@
   <% else %>
     <%= f.collection_select :organization_id, @user.organizations.all, :id, :name %>
   <% end %>
+  <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
   <!-- :organization_id, :volunteer_id -->
   <%= f.submit %>
 <% end %>

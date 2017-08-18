@@ -1,5 +1,17 @@
 Opportunity: <%= @opportunity.name %><br />
 Status: <%= @opportunity.status %><br />
 Organization: <%= @opportunity.organization.name %><br />
+<% if @opportunity.volunteer.present? %>
+  Volunteer: <%= @opportunity.volunteer.name %>
+  <% else %>
+  <%= form_for @opportunity do |f| %>
+  Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
+  <%= f.submit %>
+  <% end %>
+
+  <%# @volunteers.each do |vol| %>
+  <%# binding.pry %>
+  <%#= vol.name %><br />
+  <% end %>
 <%= button_to "Edit", edit_organization_opportunity_path(@organization, @opportunity), :method => 'get' %>
 <%= button_to "Delete", organization_opportunity_path(@organization, @opportunity), :method => 'delete' %>

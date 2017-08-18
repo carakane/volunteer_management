@@ -28,6 +28,7 @@ class OpportunitiesController < ApplicationController
     @opportunity = Opportunity.find(params[:id])
     @organization = Organization.find(@opportunity.organization_id)
     @opportunities = @organization.opportunities if @organization.opportunities.present?
+    @volunteers = @opportunity.opportunity_match?
   end
 
   def edit
@@ -35,11 +36,16 @@ class OpportunitiesController < ApplicationController
     if params[:organization_id].present?
       @organization = Organization.find(params[:organization_id])
     end
+    @volunteers = @opportunity.opportunity_match?
   end
 
   def update
     @opportunity.update(opportunity_params)
-    @organization = Organization.find(params[:opportunity][:organization_id])
+    @organization = Organization.find(@opportunity.organization_id)
+    # @organization = Organization.find(params[:opportunity][:organization_id])
+    if @opportunity.volunteer.present? && @opportunity.status == "open"
+      @opportunity.status = "assigned"
+    end
     redirect_to organization_opportunity_path(@organization, @opportunity)
   end
 
