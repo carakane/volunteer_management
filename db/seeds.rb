@@ -26,7 +26,7 @@ end
     organization_id: Faker::Number.between(1, 10),
     volunteer_id: Faker::Number.between(1, 10),
     day: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].sample,
-    status: ["open", "assigned", "completed"].sample
+    status: [0, 1, 2].sample
   )
   Availability.create(
   volunteer_id: Faker::Number.between(1, 10),
