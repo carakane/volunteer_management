@@ -16,6 +16,7 @@ class Opportunity < ActiveRecord::Base
   #enum status: {open: 0, assigned: 1, completed: 2}
   # scope :most_recent, -> (limit) { order("created_at desc").limit(limit)}
   scope :most_recent, -> { order("created_at desc")}
+  scope :by_organization, -> organization_id {where(organization_id: organization_id) }
 
   def opportunity_match?
     @volunteers = []
