@@ -3,7 +3,17 @@
   <%= f.text_field :name, :required => true %>
   <%= f.label :status %>
   <%= f.collection_select :status, Opportunity.statuses.keys, :to_s, :titlecase %>
-  <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true %>
+
+  <%= f.label :organization %>
+  <% if @organization.present? %>
+    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true, :selected => @organization.id %>
+  <% else %>
+    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true %>
+  <% end %>
+
+  <%= f.label :volunteer %>
   <%= f.collection_select :volunteer_id, @volunteers, :id, :name, :include_blank => true %>
+  <%= f.label :day %>
+  <%= f.collection_select :day, Opportunity.days.keys, :to_s, :titlecase %>
   <%= f.submit %>
 <% end %>

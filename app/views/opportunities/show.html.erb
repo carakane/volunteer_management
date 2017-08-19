@@ -1,5 +1,5 @@
 Opportunity: <%= @opportunity.name %><br />
-Status: <%= @opportunity.status %><br />
+Status: <%= @opportunity.status.titleize %><br />
 Organization: <%= link_to "#{@opportunity.organization.name}", organization_path(@opportunity.organization) %><br />
 <% if @opportunity.volunteer.present? %>
   Volunteer: <%= @opportunity.volunteer.name %>
@@ -8,6 +8,7 @@ Organization: <%= link_to "#{@opportunity.organization.name}", organization_path
   Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
   <%= f.submit %>
   <% end %>
+Day: <%= @opportunity.day.titleize %>
 
   <%# @volunteers.each do |vol| %>
   <%# binding.pry %>

@@ -31,7 +31,7 @@ ToDo
 
 16) partials
 
-17) create opp at org not defaulting to correct org
+<!-- 17) create opp at org not defaulting to correct org -->
 
 18) edit opp vol label
 

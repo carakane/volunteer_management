@@ -1,3 +1,4 @@
+<h3>Your Organizations:</h3>
 <% @organizations.each do |organization| %>
   <%= link_to "#{organization.name}", organization_path(organization) %><br />
 <% end %>

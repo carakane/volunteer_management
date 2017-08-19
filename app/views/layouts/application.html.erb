@@ -5,12 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <style>
+  header {
+    border-bottom: 1px solid black;
+    text-align: center;
+  }
+  footer {
+    border-top: 1px solid black;
+    text-align: center;
+  }
+  </style>
 </head>
 <body>
 
-  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+<header>
   <h1>Volunteer Management System</h1>
   <% if current_user.present? %>
     <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
@@ -19,10 +27,15 @@
       <%= link_to "Sign In", user_session_path %> ||
       <%= link_to "Sign In With Facebook", user_facebook_omniauth_authorize_path %>
     <% end %>
-  <br /><br />
+  </header>
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+  <br />
 
 <%= yield %>
 
+<footer>
   <% if current_user.present? %>
   <br /><br />
   <%= link_to "Organizations", organizations_path %> ||
@@ -30,6 +43,7 @@
   <%= link_to "Volunteers", volunteers_path %> ||
   <%= link_to "User Home Page", user_path(current_user) %>
   <% end %>
+</footer>
 
 </body>
 </html>
