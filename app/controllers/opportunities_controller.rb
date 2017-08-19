@@ -16,6 +16,7 @@ class OpportunitiesController < ApplicationController
     if params[:organization_id].present?
       @organization = Organization.find(params[:organization_id])
     end
+    # binding.pry
   end
 
   def create
