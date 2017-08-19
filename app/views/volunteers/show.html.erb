@@ -1,4 +1,14 @@
 <h3>Name: <%= @volunteer.name %></h3><br />
+<% if @opportunities.present? %>
+  Opportunities:
+  <% @opportunities.each do |opportunity| %>
+    <%= opportunity.name %> ||
+    <%= opportunity.organization %> ||
+    <%= opportunity.status %>
+  <% end %>
+<% else %>
+  Not Yet Assigned to Any Opportunities
+<% end %>
 <h4>Availability:</h4>
 Monday: <%= @volunteer.availability.monday %><br />
 Tuesday: <%= @volunteer.availability.tuesday %><br />

@@ -15,6 +15,7 @@ class VolunteersController < ApplicationController
 
   def show
     @volunteer = Volunteer.find(params[:id])
+    @opportunities = @volunteer.opportunities
     # binding.pry
   end
 

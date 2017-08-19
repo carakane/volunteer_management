@@ -24,6 +24,7 @@ class Opportunity < ActiveRecord::Base
     a.each do |av|
       @volunteers << av.volunteer unless av.volunteer.opportunities.pluck(:status) == [1]
     end
+    # binding.pry
     @volunteers
 end
 end

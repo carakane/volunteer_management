@@ -1,6 +1,5 @@
 ToDo
-1) class level ActiveRecord scope methods, e.g.,
-# Cart.most_valuable.by_customer(@customer)
+<!-- 1) class level ActiveRecord scope methods, e.g., # Cart.most_valuable.by_customer(@customer) -->
 
 2) defend against invalid data
 
@@ -31,3 +30,13 @@ ToDo
 15) DRY
 
 16) partials
+
+17) create opp at org not defaulting to correct org
+
+18) edit opp vol label
+
+19) remove vol still assigned
+
+20) availability of vol worded differently
+21) day not on opp edit
+22) not all vols showing up?? put opps on vols show page

@@ -8,7 +8,7 @@
 
 10.times do
   User.create(
-    email: Faker::Internet.safe_email,
+    email: Faker::Internet.unique.safe_email,
     password: Faker::Internet.password
   )
   Volunteer.create(
@@ -18,18 +18,19 @@ end
 
 10.times do
   Organization.create(
-    name: Faker::Company.name,
+    name: Faker::Company.unique.name,
     user_id: Faker::Number.between(1, 10)
   )
   Opportunity.create(
     name: Faker::Job.title,
     organization_id: Faker::Number.between(1, 10),
-    volunteer_id: Faker::Number.between(1, 10),
+    # volunteer_id: Faker::Number.between(1, 10),
     day: [0, 1, 2, 3, 4, 5, 6].sample,
-    status: [0, 1, 2].sample
+    # status: [0, 1, 2].sample
+    status: 0
   )
   Availability.create(
-  volunteer_id: Faker::Number.between(1, 10),
+  volunteer_id: Faker::Number.unique.between(1, 10),
   monday: ["true", "false"].sample,
   tuesday: ["true", "false"].sample,
   wednesday: ["true", "false"].sample,
