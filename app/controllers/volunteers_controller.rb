@@ -1,5 +1,9 @@
 class VolunteersController < ApplicationController
 
+  def index
+    @volunteers = Volunteer.all
+  end
+
   def new
     @volunteer = Volunteer.new
   end
@@ -11,6 +15,7 @@ class VolunteersController < ApplicationController
 
   def show
     @volunteer = Volunteer.find(params[:id])
+    # binding.pry
   end
 
   private
