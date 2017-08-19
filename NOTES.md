@@ -18,4 +18,8 @@ ToDo
 
 <!-- 9) opportunity status needs to be a drop down -->
 
-10) is volunteer pool specific to user? to org? or to whole app?
+<!-- 10) is volunteer pool specific to user? to org? or to whole app? -->
+
+<!-- 11) if an opp is assigned its status must change from open -->
+
+12) another way to mark assigned opp as completed?

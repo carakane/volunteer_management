@@ -45,6 +45,7 @@ class OpportunitiesController < ApplicationController
     # @organization = Organization.find(params[:opportunity][:organization_id])
     if @opportunity.volunteer.present? && @opportunity.status == "open"
       @opportunity.status = "assigned"
+      @opportunity.save
     end
     redirect_to organization_opportunity_path(@organization, @opportunity)
   end
