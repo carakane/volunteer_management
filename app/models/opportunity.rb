@@ -14,7 +14,8 @@ class Opportunity < ActiveRecord::Base
   enum status: [:open, :assigned, :completed]
   enum day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
   #enum status: {open: 0, assigned: 1, completed: 2}
-  scope :most_recent, -> (limit) { order("created_at desc").limit(limit)}
+  # scope :most_recent, -> (limit) { order("created_at desc").limit(limit)}
+  scope :most_recent, -> { order("created_at desc")}
 
   def opportunity_match?
     @volunteers = []

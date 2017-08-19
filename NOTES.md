@@ -26,4 +26,8 @@ ToDo
 
 <!-- 13) new volunteer isn't set up correctly -->
 
-14) form field not blank
+<!-- 14) form field not blank -->
+
+15) DRY
+
+16) partials
