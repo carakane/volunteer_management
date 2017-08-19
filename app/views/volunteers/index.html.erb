@@ -1,3 +1,5 @@
 <% @volunteers.each do |volunteer| %>
   <%= link_to volunteer.name, volunteer_path(volunteer) %><br />
 <% end %>
+<br />
+<%= link_to "Create a new Volunteer", new_volunteer_path %>

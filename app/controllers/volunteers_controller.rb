@@ -18,6 +18,24 @@ class VolunteersController < ApplicationController
     # binding.pry
   end
 
+  def edit
+    @volunteer = Volunteer.find(params[:id])
+  end
+
+  def update
+    @volunteer = Volunteer.find(params[:id])
+    @volunteer.update(volunteer_params)
+    flash[:notice] = "You have edited #{@volunteer.name}."
+    redirect_to volunteer_path(@volunteer)
+  end
+
+  def destroy
+    @volunteer = Volunteer.find(params[:id])
+    @volunteer.destroy
+    flash[:notice] = "You have deleted #{@volunteer.name}."
+    redirect_to volunteers_path
+  end
+
   private
 
     def volunteer_params

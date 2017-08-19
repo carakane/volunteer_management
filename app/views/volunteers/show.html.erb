@@ -7,3 +7,6 @@ Thursday: <%= @volunteer.availability.thursday %><br />
 Friday: <%= @volunteer.availability.friday %><br />
 Saturday: <%= @volunteer.availability.saturday %><br />
 Sunday: <%= @volunteer.availability.sunday %>
+
+<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>
+<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete' %>
