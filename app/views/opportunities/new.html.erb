@@ -1,15 +1,9 @@
 <%= form_for @opportunity do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :required => true %>
   <%= f.label :status %>
   <%= f.collection_select :status, Opportunity.statuses.keys, :to_s, :titlecase %>
-  <% if @organization.present? %>
-    <%= f.label "#{@organization.name}" %>
-    <%= f.hidden_field :organization_id, value: params[:organization_id] %>
-  <% else %>
-    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name %>
-  <% end %>
+  <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true %>
   <%= f.collection_select :day, Opportunity.days.keys, :to_s, :titlecase %>
-  <!-- :organization_id, :volunteer_id -->
   <%= f.submit %>
 <% end %>

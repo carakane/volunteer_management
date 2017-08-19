@@ -1,6 +1,6 @@
 <%= form_for @volunteer do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %><br />
+  <%= f.text_field :name, :required => true %><br />
   Check available days:<br />
   <%= f.fields_for :availability, Availability.new do |availability| %>
     <%= availability.label :monday %>

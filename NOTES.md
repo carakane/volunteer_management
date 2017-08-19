@@ -24,4 +24,6 @@ ToDo
 
 12) another way to mark assigned opp as completed?
 
-13) new volunteer isn't set up correctly
+<!-- 13) new volunteer isn't set up correctly -->
+
+14) form field not blank
