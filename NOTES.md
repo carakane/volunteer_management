@@ -23,3 +23,5 @@ ToDo
 <!-- 11) if an opp is assigned its status must change from open -->
 
 12) another way to mark assigned opp as completed?
+
+13) new volunteer isn't set up correctly

@@ -4,19 +4,19 @@
   Check available days:<br />
   <%= f.fields_for :availability, Availability.new do |availability| %>
     <%= availability.label :monday %>
-    <%= availability.check_box :monday, :uncheck_value => 'false' %>
+    <%= availability.check_box :monday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :tuesday %>
-    <%= availability.check_box :tuesday, :uncheck_value => 'false' %>
+    <%= availability.check_box :tuesday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :wednesday %>
-    <%= availability.check_box :wednesday, :uncheck_value => 'false' %>
+    <%= availability.check_box :wednesday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :thursday %>
-    <%= availability.check_box :thursday, :uncheck_value => 'false' %>
+    <%= availability.check_box :thursday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :friday %>
-    <%= availability.check_box :friday, :uncheck_value => 'false' %>
+    <%= availability.check_box :friday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :saturday %>
-    <%= availability.check_box :saturday, :uncheck_value => 'false' %>
+    <%= availability.check_box :saturday, {}, checked_value = "true", unchecked_value = "false" %>
     <%= availability.label :sunday %>
-    <%= availability.check_box :sunday, :uncheck_value => 'false' %>
+    <%= availability.check_box :sunday, {}, checked_value = "true", unchecked_value = "false" %>
   <% end %>
   <%= f.submit %>
 <% end %>
