@@ -1,3 +1,11 @@
+# t.string   "name"
+# t.integer  "organization_id"
+# t.integer  "volunteer_id"
+# t.integer  "status",          default: 0
+# t.datetime "created_at",                  null: false
+# t.datetime "updated_at",                  null: false
+# t.integer  "day",             default: 0
+
 class Opportunity < ActiveRecord::Base
   belongs_to :organization
   belongs_to :volunteer
@@ -6,24 +14,7 @@ class Opportunity < ActiveRecord::Base
   enum status: [:open, :assigned, :completed]
   enum day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
   #enum status: {open: 0, assigned: 1, completed: 2}
-
-  scope :by_volunteer, -> volunteer_id {where(volunteer_id: volunteer)}
-  scope :by_organization, -> organization_id {where(organization_id: organization)}
-  #
-  # def self.open_opportunities
-  #   where("status = ?", self.statuses[:open])
-  # end
-  #
-  # def self.completed_opportunities
-  #   where("status = ?", self.statuses[:completed])
-  # end
-  #
-  # def self.assigned_opportunities
-  #   where("status = ?", self.statuses[:assigned])
-  # end
-  #
-  # def self.which_volunteers
-  # end
+  scope :most_recent, -> (limit) { order("created_at desc").limit(limit)}
 
   def opportunity_match?
     @volunteers = []
