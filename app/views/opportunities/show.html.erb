@@ -1,6 +1,6 @@
 Opportunity: <%= @opportunity.name %><br />
 Status: <%= @opportunity.status %><br />
-Organization: <%= @opportunity.organization.name %><br />
+Organization: <%= link_to "#{@opportunity.organization.name}", organization_path(@opportunity.organization) %><br />
 <% if @opportunity.volunteer.present? %>
   Volunteer: <%= @opportunity.volunteer.name %>
   <% else %>
