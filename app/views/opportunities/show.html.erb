@@ -1,18 +1,12 @@
-Opportunity: <%= @opportunity.name %><br />
-Status: <%= @opportunity.status.titleize %><br />
-Organization: <%= link_to "#{@opportunity.organization.name}", organization_path(@opportunity.organization) %><br />
+<%= render 'opp', opportunity: @opportunity %>
+
 <% if @opportunity.volunteer.present? %>
   Volunteer: <%= @opportunity.volunteer.name %>
-  <% else %>
+<% else %>
   <%= form_for @opportunity do |f| %>
-  Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
-  <%= f.submit %>
-  <% end %>
-Day: <%= @opportunity.day.titleize %>
-
-  <%# @volunteers.each do |vol| %>
-  <%# binding.pry %>
-  <%#= vol.name %><br />
-  <% end %>
+    Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
+    <%= f.submit %>
+  <% end %>  <br />
+<% end %>
 <%= button_to "Edit", edit_organization_opportunity_path(@organization, @opportunity), :method => 'get' %>
 <%= button_to "Delete", organization_opportunity_path(@organization, @opportunity), :method => 'delete' %>

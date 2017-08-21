@@ -1,0 +1,4 @@
+Name: <%= link_to opportunity.name.titleize, organization_opportunity_path(opportunity.organization, opportunity) %> ||
+Organization: <%= link_to opportunity.organization.name.titleize, organization_path(opportunity.organization) %> ||
+Status: <%= opportunity.status.titleize %> ||
+Day: <%= opportunity.day.titleize %>

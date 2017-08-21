@@ -20,7 +20,7 @@ class Opportunity < ActiveRecord::Base
 
   def opportunity_match?
     @volunteers = []
-    a = Availability.where("#{self.day}": "true")
+    a = Availability.where("#{self.day}": true)
     a.each do |av|
       @volunteers << av.volunteer unless av.volunteer.opportunities.pluck(:status) == [1]
     end
