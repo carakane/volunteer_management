@@ -9,14 +9,14 @@
 <% else %>
   Not Yet Assigned to Any Opportunities
 <% end %>
-<h4>Availability:</h4>
-Monday: <%= @volunteer.availability.monday %><br />
-Tuesday: <%= @volunteer.availability.tuesday %><br />
-Wednesday: <%= @volunteer.availability.wednesday %><br />
-Thursday: <%= @volunteer.availability.thursday %><br />
-Friday: <%= @volunteer.availability.friday %><br />
-Saturday: <%= @volunteer.availability.saturday %><br />
-Sunday: <%= @volunteer.availability.sunday %>
+<h4>Availabile?:</h4>
+Monday: <%= yesno(@volunteer.availability.monday) %><br />
+Tuesday: <%= yesno(@volunteer.availability.tuesday) %><br />
+Wednesday: <%= yesno(@volunteer.availability.wednesday) %><br />
+Thursday: <%= yesno(@volunteer.availability.thursday) %><br />
+Friday: <%= yesno(@volunteer.availability.friday) %><br />
+Saturday: <%= yesno(@volunteer.availability.saturday) %><br />
+Sunday: <%= yesno(@volunteer.availability.sunday) %>
 
 <%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>
 <%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete' %>

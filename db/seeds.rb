@@ -31,12 +31,12 @@ end
   )
   Availability.create(
   volunteer_id: Faker::Number.unique.between(1, 10),
-  monday: ["true", "false"].sample,
-  tuesday: ["true", "false"].sample,
-  wednesday: ["true", "false"].sample,
-  thursday: ["true", "false"].sample,
-  friday: ["true", "false"].sample,
-  saturday: ["true", "false"].sample,
-  sunday: ["true", "false"].sample
+  monday: [true, false].sample,
+  tuesday: [true, false].sample,
+  wednesday: [true, false].sample,
+  thursday: [true, false].sample,
+  friday: [true, false].sample,
+  saturday: [true, false].sample,
+  sunday: [true, false].sample
   )
 end

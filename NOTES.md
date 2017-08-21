@@ -33,7 +33,7 @@ ToDo
 
 <!-- 17) create opp at org not defaulting to correct org -->
 
-18) edit opp vol label
+<!-- 18) edit opp vol label -->
 
 19) remove vol still assigned
 
