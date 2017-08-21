@@ -1,15 +1,8 @@
 <h3>Name: <%= @volunteer.name %></h3><br />
-<% if @opportunities.present? %>
-  Opportunities:
-  <% @opportunities.each do |opportunity| %>
-    <%= opportunity.name %> ||
-    <%= opportunity.organization %> ||
-    <%= opportunity.status %>
-  <% end %>
-<% else %>
-  Not Yet Assigned to Any Opportunities
-<% end %>
-<h4>Availabile?:</h4>
+
+<%= render(@opportunities) || "Not Yet Assigned to Any Opportunities" %>
+
+<h4>Available?</h4>
 Monday: <%= yesno(@volunteer.availability.monday) %><br />
 Tuesday: <%= yesno(@volunteer.availability.tuesday) %><br />
 Wednesday: <%= yesno(@volunteer.availability.wednesday) %><br />
