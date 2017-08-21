@@ -1,5 +1,9 @@
 class OpportunitiesController < ApplicationController
   before_action :find_opportunity, only: [:show, :edit, :update, :destroy]
+  before_action :find_organization, only: [:new, :edit]
+  before_action :find_user, only: [:new, :edit]
+  before_action :volunteer_match, only: [:show, :edit]
+  before_action :find_opportunity_organization, only: [:update, :show]
 
   def index
     if current_user.has_opportunities?
@@ -12,11 +16,6 @@ class OpportunitiesController < ApplicationController
 
   def new
     @opportunity = Opportunity.new
-    @user = current_user
-    if params[:organization_id].present?
-      @organization = Organization.find(params[:organization_id])
-    end
-    # binding.pry
   end
 
   def create
@@ -26,23 +25,14 @@ class OpportunitiesController < ApplicationController
   end
 
   def show
-    @opportunity = Opportunity.find(params[:id])
-    @organization = Organization.find(@opportunity.organization_id)
     @opportunities = @organization.opportunities if @organization.opportunities.present?
-    @volunteers = @opportunity.opportunity_match?
   end
 
   def edit
-    @user = current_user
-    if params[:organization_id].present?
-      @organization = Organization.find(params[:organization_id])
-    end
-    @volunteers = @opportunity.opportunity_match?
   end
 
   def update
     @opportunity.update(opportunity_params)
-    @organization = Organization.find(@opportunity.organization_id)
     if @opportunity.volunteer.present? && @opportunity.status == "open"
       @opportunity.update(status: "assigned")
     elsif params[:opportunity][:status] == "completed"
@@ -62,6 +52,24 @@ class OpportunitiesController < ApplicationController
 
     def find_opportunity
       @opportunity = Opportunity.find(params[:id])
+    end
+
+    def find_organization
+      if params[:organization_id].present?
+        @organization = Organization.find(params[:organization_id])
+      end
+    end
+
+    def find_opportunity_organization
+      @organization = Organization.find(@opportunity.organization_id)
+    end
+
+    def find_user
+      @user = current_user
+    end
+
+    def volunteer_match
+      @volunteers = @opportunity.opportunity_match?
     end
 
     def opportunity_params
