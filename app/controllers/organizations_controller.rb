@@ -19,8 +19,12 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = current_user.organizations.create(organization_params)
-    redirect_to organization_path(@organization)
+    @organization = current_user.organizations.new(organization_params)
+
+    if @organization.save
+      redirect_to organization_path(@organization)
+    else render :new
+    end
   end
 
   def show
@@ -32,8 +36,11 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    @organization.update(organization_params)
-    redirect_to organization_path(@organization)
+    if @organization.update(organization_params)
+      redirect_to organization_path(@organization)
+    else
+      render :edit
+    end
   end
 
   def destroy

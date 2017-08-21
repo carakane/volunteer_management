@@ -7,11 +7,16 @@ class VolunteersController < ApplicationController
 
   def new
     @volunteer = Volunteer.new
+    @availability = @volunteer.build_availability
   end
 
   def create
-    @volunteer = Volunteer.create(volunteer_params)
-    redirect_to volunteer_path(@volunteer)
+    @volunteer = Volunteer.new(volunteer_params)
+
+    if @volunteer.save
+      redirect_to volunteer_path(@volunteer)
+    else render :new
+    end
   end
 
   def show
@@ -19,12 +24,16 @@ class VolunteersController < ApplicationController
   end
 
   def edit
+    @availability = @volunteer.availability
   end
 
   def update
-    @volunteer.update(volunteer_params)
-    flash[:notice] = "You have edited #{@volunteer.name}."
-    redirect_to volunteer_path(@volunteer)
+     if @volunteer.update(volunteer_params)
+       flash[:notice] = "You have edited #{@volunteer.name}."
+       redirect_to volunteer_path(@volunteer)
+     else
+       render :edit
+     end
   end
 
   def destroy

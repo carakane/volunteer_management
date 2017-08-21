@@ -6,9 +6,9 @@
 
   <%= f.label :organization %>
   <% if @organization.present? %>
-    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true, :selected => @organization.id %>
+    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :selected => @organization.id %>
   <% else %>
-    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :required => true %>
+    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name %>
   <% end %>
 
   <% if @opportunity.persisted? %>

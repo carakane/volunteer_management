@@ -3,6 +3,7 @@ class Volunteer < ActiveRecord::Base
   has_many :organizations, through: :opportunities
   has_one :availability
   validates :name, presence: true
+  validates :availability, presence: true
 
   def availability_attributes=(availability_attributes)
     if self.availability.present?

@@ -5,7 +5,7 @@ ToDo
 
 <!-- 3) nested resource must provide a form that relates to the parent resource -->
 
-4) Your forms should correctly display validation errors
+<!-- 4) Your forms should correctly display validation errors -->
 
 <!-- 5) user will click on an organization and then want to see opportunities for that org at the same time -->
 
@@ -43,3 +43,6 @@ ToDo
 <!-- 23) put opps on vols show page -- NO -->
 
 <!-- 24) broke vol availability -->
+
+25) edit vol doesn't have yes days checked
+<!-- 26) edit vol doesn't update correctly. -->

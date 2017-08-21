@@ -1,22 +1,29 @@
 <%= form_for @volunteer do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name, :required => true %><br />
+  <%= f.text_field :name %><br />
   Check available days:<br />
-  <%= f.fields_for :availability, Availability.new do |availability| %>
+  <%= f.fields_for :availability do |availability| %>
     <%= availability.label :monday %>
-    <%= availability.check_box :monday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :monday %>
+    <%= availability.check_box :monday, {}, checked_value = true  %>
     <%= availability.label :tuesday %>
-    <%= availability.check_box :tuesday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :tuesday %>
+    <%= availability.check_box :tuesday, {}, checked_value = true %>
     <%= availability.label :wednesday %>
-    <%= availability.check_box :wednesday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :wednesday %>
+    <%= availability.check_box :wednesday, {}, checked_value = true %>
     <%= availability.label :thursday %>
-    <%= availability.check_box :thursday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :thursday %>
+    <%= availability.check_box :thursday, {}, checked_value = true %>
     <%= availability.label :friday %>
-    <%= availability.check_box :friday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :friday %>
+    <%= availability.check_box :friday, {}, checked_value = true %>
     <%= availability.label :saturday %>
-    <%= availability.check_box :saturday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :saturday %>
+    <%= availability.check_box :saturday, {}, checked_value = true %>
     <%= availability.label :sunday %>
-    <%= availability.check_box :sunday, {}, checked_value = true, unchecked_value = false %>
+    <%= availability.hidden_field :sunday %>
+    <%= availability.check_box :sunday, {}, checked_value = true %>
   <% end %>
   <%= f.submit %>
 <% end %>
