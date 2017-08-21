@@ -1,7 +1,7 @@
 ToDo
 <!-- 1) class level ActiveRecord scope methods, e.g., # Cart.most_valuable.by_customer(@customer) -->
 
-2) defend against invalid data
+<!-- 2) defend against invalid data -->
 
 <!-- 3) nested resource must provide a form that relates to the parent resource -->
 
@@ -44,5 +44,6 @@ ToDo
 
 <!-- 24) broke vol availability -->
 
-25) edit vol doesn't have yes days checked
+<!-- 25) edit vol doesn't have yes days checked -->
 <!-- 26) edit vol doesn't update correctly. -->
+27) users home page displaying double opportunities

@@ -3,5 +3,5 @@ Opportunities:
   <%= link_to opportunity.name.titleize, organization_opportunity_path(opportunity.organization, opportunity) %> ||
   <%= link_to opportunity.organization.name.titleize, organization_path(opportunity.organization) %> ||
   <%= opportunity.status.titleize %> ||
-  <%= opportunity.day.titleize %>
+  <%= opportunity.day.titleize %><br />
 <% end %>
