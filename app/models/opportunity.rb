@@ -13,8 +13,10 @@ class Opportunity < ActiveRecord::Base
   validates :organization_id, presence: true
   enum status: [:open, :assigned, :completed]
   enum day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+  #another way to declare enum
   #enum status: {open: 0, assigned: 1, completed: 2}
-  # scope :most_recent, -> (limit) { order("created_at desc").limit(limit)}
+  #http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html
+
   scope :most_recent, -> { order("created_at desc")}
   scope :by_organization, -> organization_id {where(organization_id: organization_id) }
 
@@ -24,9 +26,6 @@ class Opportunity < ActiveRecord::Base
     a.each do |av|
       @volunteers << av.volunteer unless av.volunteer.opportunities.pluck(:status) == [1]
     end
-    # binding.pry
     @volunteers
+  end
 end
-end
-
-#http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html
