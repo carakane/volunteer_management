@@ -1,7 +1,2 @@
 <%= @user.email %><br /><br />
-<% if @opportunities.present? %>
-  Open Opportunities:
-  <% @opportunities.each do |opportunity| %>
-    <%= link_to opportunity.name, organization_opportunity_path(opportunity.organization, opportunity) %>
-  <% end %>
-<% end %>
+<%= render(@opportunities) || nil %>
