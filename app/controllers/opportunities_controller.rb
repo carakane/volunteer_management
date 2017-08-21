@@ -1,7 +1,7 @@
 class OpportunitiesController < ApplicationController
   before_action :find_opportunity, only: [:show, :edit, :update, :destroy]
   before_action :find_organization, only: [:new, :edit]
-  before_action :find_user, only: [:new, :edit]
+  before_action :find_user, only: [:new, :edit, :update, :create]
   before_action :volunteer_match, only: [:show, :edit]
   before_action :find_opportunity_organization, only: [:update, :show]
 
@@ -15,13 +15,19 @@ class OpportunitiesController < ApplicationController
   end
 
   def new
+    # binding.pry
     @opportunity = Opportunity.new
   end
 
   def create
     @organization = Organization.find(params[:opportunity][:organization_id])
-    @opportunity = @organization.opportunities.create(opportunity_params)
-    redirect_to organization_opportunity_path(@organization, @opportunity)
+    @opportunity = @organization.opportunities.new(opportunity_params)
+
+    if @opportunity.save
+      redirect_to organization_opportunity_path(@organization, @opportunity)
+    else
+      render :new
+    end
   end
 
   def show

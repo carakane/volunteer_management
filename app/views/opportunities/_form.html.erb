@@ -1,6 +1,6 @@
 <%= form_for @opportunity do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name, :required => true %>
+  <%= f.text_field :name %>
   <%= f.label :status %>
   <%= f.collection_select :status, Opportunity.statuses.keys, :to_s, :titlecase %>
 
