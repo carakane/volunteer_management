@@ -21,7 +21,7 @@ ToDo
 
 <!-- 11) if an opp is assigned its status must change from open -->
 
-12) another way to mark assigned opp as completed?
+<!-- 12) another way to mark assigned opp as completed? -->
 
 <!-- 13) new volunteer isn't set up correctly -->
 
@@ -29,17 +29,17 @@ ToDo
 
 15) DRY
 
-16) partials
+<!-- 16) partials -->
 
 <!-- 17) create opp at org not defaulting to correct org -->
 
 <!-- 18) edit opp vol label -->
 
-19) remove vol still assigned
+<!-- 19) remove vol still assigned -->
 
 <!-- 20) availability of vol worded differently -->
-21) day not on opp edit
+<!-- 21) day not on opp edit -->
 <!-- 22) not all vols showing up??  -->
-23) put opps on vols show page
+<!-- 23) put opps on vols show page -- NO -->
 
-24) broke vol availability
+<!-- 24) broke vol availability -->

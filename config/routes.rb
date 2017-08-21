@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :organizations
 
   resources :organizations, only: [:show] do
-    resources :opportunities, only: [:index, :show, :edit, :destroy, :new]
+    resources :opportunities, only: [:index, :show, :edit, :destroy, :new, :update]
   end
 
   resources :volunteers

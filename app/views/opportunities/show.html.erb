@@ -2,6 +2,7 @@
 
 <% if @opportunity.volunteer.present? %>
   Volunteer: <%= @opportunity.volunteer.name %>
+  <%= button_to "Mark As Completed", organization_opportunity_path(@organization, @opportunity), method: :patch, params: {'opportunity[status]' => "completed"} %>
 <% else %>
   <%= form_for @opportunity do |f| %>
     Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>

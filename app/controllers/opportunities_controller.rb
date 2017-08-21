@@ -43,10 +43,12 @@ class OpportunitiesController < ApplicationController
   def update
     @opportunity.update(opportunity_params)
     @organization = Organization.find(@opportunity.organization_id)
-    # @organization = Organization.find(params[:opportunity][:organization_id])
     if @opportunity.volunteer.present? && @opportunity.status == "open"
-      @opportunity.status = "assigned"
-      @opportunity.save
+      @opportunity.update(status: "assigned")
+    elsif params[:opportunity][:status] == "completed"
+      @opportunity.update(status: "completed")
+    elsif params[:opportunity][:volunteer_id] == "" && @opportunity.status == "assigned"
+      @opportunity.update(status: "open")
     end
     redirect_to organization_opportunity_path(@organization, @opportunity)
   end
