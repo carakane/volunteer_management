@@ -23,6 +23,7 @@ class OpportunitiesController < ApplicationController
     @opportunity = @organization.opportunities.new(opportunity_params)
 
     if @opportunity.save
+      flash[:notice] = "You have created #{@opportunity.name}."
       redirect_to organization_opportunity_path(@organization, @opportunity)
     else
       render :new
@@ -45,6 +46,7 @@ class OpportunitiesController < ApplicationController
       elsif params[:opportunity][:volunteer_id] == "" && @opportunity.status == "assigned"
         @opportunity.update(status: "open")
       end
+      flash[:notice] = "You have edited #{@opportunity.name}."
       redirect_to organization_opportunity_path(@organization, @opportunity)
     else
       render :edit
@@ -52,6 +54,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def destroy
+    flash[:notice] = "You have deleted #{@opportunity.name}."
     @opportunity.destroy
     redirect_to opportunities_path
   end

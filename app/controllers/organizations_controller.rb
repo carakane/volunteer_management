@@ -22,6 +22,7 @@ class OrganizationsController < ApplicationController
     @organization = current_user.organizations.new(organization_params)
 
     if @organization.save
+      flash[:notice] = "You have created #{@organization.name}."
       redirect_to organization_path(@organization)
     else render :new
     end
@@ -37,6 +38,7 @@ class OrganizationsController < ApplicationController
 
   def update
     if @organization.update(organization_params)
+      flash[:notice] = "You have edited #{@organization.name}."
       redirect_to organization_path(@organization)
     else
       render :edit
@@ -44,10 +46,8 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
-    # @opportunities = Opportunity.find_by(organization_id: @organization_id)
-    # @opportunities.destroy
+    flash[:notice] = "You have deleted #{@organization.name}."
     @organization.destroy
-    # binding.pry
     redirect_to organizations_path
   end
 

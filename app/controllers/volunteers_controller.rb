@@ -14,6 +14,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
 
     if @volunteer.save
+      flash[:notice] = "You have created #{@volunteer.name}."
       redirect_to volunteer_path(@volunteer)
     else render :new
     end
