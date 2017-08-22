@@ -1,3 +1,2 @@
 class AvailabilitiesController < ApplicationController
-
 end

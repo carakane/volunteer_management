@@ -1,0 +1,11 @@
+<header>
+  <h1>Volunteer Management System</h1>
+  <% if current_user.present? %>
+    Signed in as: <%= current_user.email %> ||
+    <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path %> ||
+      <%= link_to "Sign In", user_session_path %> ||
+      <%= link_to "Sign In With Facebook", user_facebook_omniauth_authorize_path %>
+    <% end %>
+  </header>

@@ -1,19 +1,17 @@
-<%= form_for @opportunity do |f| %>
+<%= form_for opportunity do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :status %>
-  <%= f.collection_select :status, Opportunity.statuses.keys, :to_s, :titlecase %>
 
   <%= f.label :organization %>
-  <% if @organization.present? %>
-    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name, :selected => @organization.id %>
+  <% if organization.present? %>
+    <%= f.collection_select :organization_id, user.organizations.all, :id, :name, :selected => organization.id %>
   <% else %>
-    <%= f.collection_select :organization_id, @user.organizations.all, :id, :name %>
+    <%= f.collection_select :organization_id, user.organizations.all, :id, :name %>
   <% end %>
 
-  <% if @opportunity.persisted? %>
+  <% if opportunity.persisted? %>
     <%= f.label :volunteer %>
-    <%= f.collection_select :volunteer_id, @volunteers, :id, :name, :include_blank => true %>
+    <%= f.collection_select :volunteer_id, volunteers, :id, :name, :include_blank => true %>
   <% end %>
   <%= f.label :day %>
   <%= f.collection_select :day, Opportunity.days.keys, :to_s, :titlecase %>

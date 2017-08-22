@@ -1,15 +1,12 @@
-<!-- <h2>Opportunities</h2> -->
-<%# @opportunities.each do |opportunity| %>
-  Name: <%= link_to opportunity.name.titleize, organization_opportunity_path(opportunity.organization, opportunity) %> ||
-  Organization: <%= link_to opportunity.organization.name.titleize, organization_path(opportunity.organization) %> ||
-  Status: <%= opportunity.status.titleize %> ||
-  Day: <%= opportunity.day.titleize %><br />
-  Volunteer:
-  <% if opportunity.volunteer.present? %>
-    <%= opportunity.volunteer.name %>
-  <% else %>
-    Not Assigned
-  <% end %>
-    <br />
+Name: <%= link_to opportunity.name.titleize, organization_opportunity_path(opportunity.organization, opportunity) %> ||
+Organization: <%= link_to opportunity.organization.name.titleize, organization_path(opportunity.organization) %> ||
+Status: <%= opportunity.status.titleize %> ||
+Day: <%= opportunity.day.titleize %><br />
+Volunteer:
+<% if opportunity.volunteer.present? %>
+  <%= opportunity.volunteer.name %>
+<% else %>
+  Not Assigned
+<% end %>
   <br />
-<%# end %>
+<br />

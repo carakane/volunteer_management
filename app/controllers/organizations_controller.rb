@@ -30,7 +30,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @user = current_user
-    @opportunities = @organization.opportunities if @organization.opportunities
+    @opportunities = @organization.opportunities
   end
 
   def edit

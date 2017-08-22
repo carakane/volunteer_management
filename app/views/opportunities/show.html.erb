@@ -1,13 +1,6 @@
 <%= render 'opp', opportunity: @opportunity %>
 
-<% if @opportunity.volunteer.present? %>
-   || Volunteer: <%= @opportunity.volunteer.name %>
-  <%= button_to "Mark As Completed", organization_opportunity_path(@organization, @opportunity), method: :patch, params: {'opportunity[status]' => "completed"} %>
-<% else %>
-  <%= form_for @opportunity do |f| %>
-    Available Volunteers: <%= f.collection_select :volunteer_id, @volunteers, :id, :name %>
-    <%= f.submit %>
-  <% end %>  <br />
-<% end %>
+<%= render 'volunteer', opportunity: @opportunity, organization: @organization, volunteers: @volunteers %>
+
 <%= button_to "Edit", edit_organization_opportunity_path(@organization, @opportunity), :method => 'get' %>
 <%= button_to "Delete", organization_opportunity_path(@organization, @opportunity), :method => 'delete' %>

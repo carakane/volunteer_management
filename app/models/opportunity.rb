@@ -1,11 +1,3 @@
-# t.string   "name"
-# t.integer  "organization_id"
-# t.integer  "volunteer_id"
-# t.integer  "status",          default: 0
-# t.datetime "created_at",                  null: false
-# t.datetime "updated_at",                  null: false
-# t.integer  "day",             default: 0
-
 class Opportunity < ActiveRecord::Base
   belongs_to :organization
   belongs_to :volunteer
@@ -17,15 +9,13 @@ class Opportunity < ActiveRecord::Base
   #enum status: {open: 0, assigned: 1, completed: 2}
   #http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html
 
-  scope :most_recent, -> { order("created_at desc")}
-  scope :by_organization, -> organization_id {where(organization_id: organization_id) }
+  scope :most_recent, -> {order("created_at desc")}
+  scope :by_organization, -> organization_id {where(organization_id: organization_id)}
 
-  def opportunity_match?
-    @volunteers = []
-    a = Availability.where("#{self.day}": true)
-    a.each do |av|
-      @volunteers << av.volunteer unless av.volunteer.opportunities.pluck(:status) == [1]
+  def opportunity_match
+    availabilities = Availability.where("#{self.day}": true)
+    availabilities.each.collect do |availability|
+      availability.volunteer unless availability.volunteer.opportunities.pluck(:status) == [1]
     end
-    @volunteers
   end
 end

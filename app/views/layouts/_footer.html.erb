@@ -1,0 +1,9 @@
+<footer>
+  <% if current_user.present? %>
+  <br /><br />
+  <%= link_to "Organizations", organizations_path %> ||
+  <%= link_to "Opportunities", opportunities_path %> ||
+  <%= link_to "Volunteers", volunteers_path %> ||
+  <%= link_to "User Home Page", user_path(current_user) %>
+  <% end %>
+</footer>
