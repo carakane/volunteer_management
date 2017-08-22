@@ -1,7 +1,7 @@
 class OpportunitiesController < ApplicationController
   before_action :find_opportunity, only: [:show, :edit, :update, :destroy]
   before_action :find_organization, only: [:new, :edit]
-  before_action :find_user, only: [:new, :edit, :update]
+  before_action :find_user, only: [:new, :edit, :update, :show]
   before_action :volunteer_match, only: [:show, :edit, :update]
   before_action :find_opportunity_organization, only: [:update, :show]
 
@@ -15,7 +15,12 @@ class OpportunitiesController < ApplicationController
   end
 
   def new
-    @opportunity = Opportunity.new
+    if @user.organizations.present?
+      @opportunity = Opportunity.new
+    else
+      flash[:notice] = "Please Create an Organization Before Creating an Opportunity"
+      redirect_to '/organizations/new'
+    end
   end
 
   def create
@@ -31,10 +36,16 @@ class OpportunitiesController < ApplicationController
   end
 
   def show
+    if @opportunity.organization.user != @user
+      redirect_to '/'
+    end
     @opportunities = @organization.opportunities if @organization.opportunities.present?
   end
 
   def edit
+    if @opportunity.organization.user != @user
+      redirect_to '/'
+    end
   end
 
   def update

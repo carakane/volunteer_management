@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :find_organization, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit,]
 
   def index
     if current_user.present?
@@ -29,11 +30,16 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @opportunities = @organization.opportunities
+    if @organization.user == @user
+      @opportunities = @organization.opportunities
+    else redirect_to '/'
+    end
   end
 
   def edit
+    if @organization.user != @user
+      redirect_to '/'
+    end
   end
 
   def update
@@ -55,6 +61,10 @@ class OrganizationsController < ApplicationController
 
     def find_organization
       @organization = Organization.find(params[:id])
+    end
+
+    def find_user
+      @user = current_user
     end
 
     def organization_params
