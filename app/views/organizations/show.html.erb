@@ -3,7 +3,8 @@
 <%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
 <br />
 
-<%= render(@opportunities) %>
+<h4>Opportunities</h4>
+<%= render(@opportunities) || "There are no opportunities at this organization" %>
 <br />
 <br />
 
