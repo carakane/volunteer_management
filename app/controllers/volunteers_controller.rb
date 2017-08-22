@@ -38,7 +38,9 @@ class VolunteersController < ApplicationController
   end
 
   def destroy
-    Opportunity.find_by(volunteer_id: @volunteer.id).update(status: 0, volunteer_id: nil)
+    if @volunteer.opportunities.present?
+      Opportunity.find_by(volunteer_id: @volunteer.id).update(status: 0, volunteer_id: nil)
+    end
     @volunteer.destroy
     flash[:notice] = "You have deleted #{@volunteer.name}."
     redirect_to volunteers_path

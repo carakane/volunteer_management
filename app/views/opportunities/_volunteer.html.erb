@@ -1,5 +1,5 @@
 <% if opportunity.volunteer.present? %>
-   || Volunteer: <%= opportunity.volunteer.name %>
+   || Volunteer: <%= link_to opportunity.volunteer.name, volunteer_path(opportunity.volunteer) %>
   <%= button_to "Mark As Completed", organization_opportunity_path(organization, opportunity), method: :patch, params: {'opportunity[status]' => "completed"} %>
 <% else %>
   <%= form_for opportunity do |f| %>

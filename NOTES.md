@@ -27,7 +27,7 @@ ToDo
 
 <!-- 14) form field not blank -->
 
-15) DRY
+<!-- 15) DRY -->
 
 <!-- 16) partials -->
 

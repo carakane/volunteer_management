@@ -4,7 +4,7 @@ Status: <%= opportunity.status.titleize %> ||
 Day: <%= opportunity.day.titleize %><br />
 Volunteer:
 <% if opportunity.volunteer.present? %>
-  <%= opportunity.volunteer.name %>
+  <%= link_to opportunity.volunteer.name, volunteer_path(opportunity.volunteer) %>
 <% else %>
   Not Assigned
 <% end %>
