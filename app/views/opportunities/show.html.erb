@@ -1,7 +1,7 @@
 <%= render 'opp', opportunity: @opportunity %>
 
 <% if @opportunity.volunteer.present? %>
-  Volunteer: <%= @opportunity.volunteer.name %>
+   || Volunteer: <%= @opportunity.volunteer.name %>
   <%= button_to "Mark As Completed", organization_opportunity_path(@organization, @opportunity), method: :patch, params: {'opportunity[status]' => "completed"} %>
 <% else %>
   <%= form_for @opportunity do |f| %>

@@ -47,3 +47,8 @@ ToDo
 <!-- 25) edit vol doesn't have yes days checked -->
 <!-- 26) edit vol doesn't update correctly. -->
 <!-- 27) users home page displaying double opportunities -->
+28) opp can't be completed or assigned without vol
+
+29) edit, create, delete flash messages
+
+30) delete organization and it messes up opp show

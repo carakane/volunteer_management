@@ -1,7 +1,7 @@
 class Volunteer < ActiveRecord::Base
   has_many :opportunities
   has_many :organizations, through: :opportunities
-  has_one :availability
+  has_one :availability, dependent: :destroy
   validates :name, presence: true
   validates :availability, presence: true
 

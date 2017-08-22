@@ -44,7 +44,10 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
+    # @opportunities = Opportunity.find_by(organization_id: @organization_id)
+    # @opportunities.destroy
     @organization.destroy
+    # binding.pry
     redirect_to organizations_path
   end
 
