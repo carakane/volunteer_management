@@ -42,9 +42,7 @@ ActiveRecord::Schema.define(version: 20170823132734) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.integer "volunteer_id"
-    t.string  "name"
-    t.string  "proficiency"
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

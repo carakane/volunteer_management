@@ -50,13 +50,7 @@ class OpportunitiesController < ApplicationController
 
   def update
     if @opportunity.update(opportunity_params)
-      if @opportunity.volunteer.present? && @opportunity.status == "open"
-        @opportunity.update(status: "assigned")
-      elsif params[:opportunity][:status] == "completed" && params[:opportunity][:volunteer_id] != ""
-        @opportunity.update(status: "completed")
-      elsif params[:opportunity][:volunteer_id] == ""
-        @opportunity.update(status: "open")
-      end
+      update_status
       flash[:notice] = "You have edited #{@opportunity.name}."
       redirect_to organization_opportunity_path(@organization, @opportunity)
     else
@@ -84,6 +78,16 @@ class OpportunitiesController < ApplicationController
 
     def find_opportunity_organization
       @organization = Organization.find(@opportunity.organization_id)
+    end
+
+    def update_status
+      if @opportunity.volunteer.present? && @opportunity.status == "open"
+        @opportunity.update(status: "assigned")
+      elsif params[:opportunity][:status] == "completed" && params[:opportunity][:volunteer_id] != ""
+        @opportunity.update(status: "completed")
+      elsif params[:opportunity][:volunteer_id] == ""
+        @opportunity.update(status: "open")
+      end
     end
 
     def find_user

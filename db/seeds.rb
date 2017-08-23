@@ -21,6 +21,9 @@
 end
 
 10.times do
+  Skill.create(
+  name: Faker::Job.unique.key_skill
+  )
   Organization.create(
     name: Faker::Company.unique.name,
     user_id: 1
