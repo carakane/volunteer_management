@@ -7,9 +7,9 @@ can be edited or deleted at any time. Enjoy!
 ## Installation
 After forking and cloning the repository, run `bundle install`, `rake db:migrate`, and then `rails s`.
 
-##Contributing
+## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/carakane/volunteer_manager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org)
 code of conduct.
 
-##License
+## License
 This application is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
