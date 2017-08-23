@@ -8,6 +8,7 @@ class VolunteersController < ApplicationController
   def new
     @volunteer = Volunteer.new
     @availability = @volunteer.build_availability
+    @volunteer.skills.build
   end
 
   def create
@@ -54,6 +55,7 @@ class VolunteersController < ApplicationController
 
     def volunteer_params
       params.require(:volunteer).permit(:name,
-      availability_attributes: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday])
+      availability_attributes: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday],
+      :skill_ids => [], :skills_attributes => [:name])
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821125538) do
+ActiveRecord::Schema.define(version: 20170823132734) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "volunteer_id"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20170821125538) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.integer "volunteer_id"
+    t.string  "name"
+    t.string  "proficiency"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "uid"
     t.string   "provider"
@@ -62,6 +68,11 @@ ActiveRecord::Schema.define(version: 20170821125538) do
   add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
+
+  create_table "volunteer_skills", force: :cascade do |t|
+    t.integer "volunteer_id"
+    t.integer "skill_id"
+  end
 
   create_table "volunteers", force: :cascade do |t|
     t.string   "name"

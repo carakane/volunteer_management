@@ -1,5 +1,5 @@
 <h3>Name: <%= @volunteer.name %></h3><br />
-
+<h4>Skills:<%= render 'skills', skills: @volunteer.skills %> </h4><br />
 <%= render(@opportunities) || "Not Yet Assigned to Any Opportunities" %>
 
 <h4>Available?</h4>

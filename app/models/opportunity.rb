@@ -15,18 +15,6 @@ class Opportunity < ActiveRecord::Base
   def opportunity_match
     availabilities = Availability.where("#{self.day}": true)
     availabilities.select{|availability| availability.volunteer.opportunities.pluck(:status) != [1]}.collect{|availability| availability.volunteer}
-    # binding.pry
-    # availabilities.collect do |availability|
-    #   availability.volunteer unless availability.volunteer.opportunities.pluck(:status) == [1]
-
-# availabilities.collect do |availability|
-#   if availability.volunteer.opportunities.pluck(:status) != [1]
-#     availability.volunteer
-#   end
-# end
-
-
   end
-
 
 end

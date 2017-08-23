@@ -25,5 +25,14 @@
     <%= availability.hidden_field :sunday %>
     <%= availability.check_box :sunday, {}, checked_value = true %>
   <% end %>
+<br />
+
+  <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %><br>
+
+  <%= f.fields_for :skills do |skill| %>
+    <%= skill.label "Skill" %>
+    <%= skill.text_field :name %>
+  <% end %>
+
   <%= f.submit %>
 <% end %>
