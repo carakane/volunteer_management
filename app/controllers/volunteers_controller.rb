@@ -8,7 +8,7 @@ class VolunteersController < ApplicationController
   def new
     @volunteer = Volunteer.new
     @availability = @volunteer.build_availability
-    @volunteer.skills.build
+    # @volunteer.skills.build
   end
 
   def create
@@ -27,6 +27,7 @@ class VolunteersController < ApplicationController
 
   def edit
     @availability = @volunteer.availability
+    # @volunteer.skills.build
   end
 
   def update
