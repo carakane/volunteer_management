@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
   before_action :find_volunteer, only: [:show, :edit, :update, :destroy]
+  before_action :user_present?
 
   def index
     @volunteers = Volunteer.all

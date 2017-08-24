@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
+
+  def user_present?
+    if current_user.nil?
+      redirect_to '/'
+    end
+  end
 end

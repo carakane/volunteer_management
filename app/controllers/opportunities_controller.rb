@@ -4,6 +4,7 @@ class OpportunitiesController < ApplicationController
   before_action :find_user, only: [:new, :edit, :update, :show]
   before_action :volunteer_match, only: [:show, :edit, :update]
   before_action :find_opportunity_organization, only: [:update, :show]
+  before_action :user_present?
 
   def index
     if current_user.has_opportunities?

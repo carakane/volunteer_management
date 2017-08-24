@@ -1,6 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :find_organization, only: [:show, :edit, :update, :destroy]
   before_action :find_user, only: [:show, :edit,]
+  before_action :user_present?
 
   def index
     if current_user.present?
