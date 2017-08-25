@@ -4,26 +4,19 @@
   Check available days:<br />
   <%= f.fields_for :availability do |availability| %>
     <%= availability.label :monday %>
-    <%= availability.hidden_field :monday %>
-    <%= availability.check_box :monday, {}, checked_value = true  %>
+    <%= availability.check_box :monday, {}, true, false %>
     <%= availability.label :tuesday %>
-    <%= availability.hidden_field :tuesday %>
-    <%= availability.check_box :tuesday, {}, checked_value = true %>
+    <%= availability.check_box :tuesday, {}, true, false %>
     <%= availability.label :wednesday %>
-    <%= availability.hidden_field :wednesday %>
-    <%= availability.check_box :wednesday, {}, checked_value = true %>
+    <%= availability.check_box :wednesday, {}, true, false %>
     <%= availability.label :thursday %>
-    <%= availability.hidden_field :thursday %>
-    <%= availability.check_box :thursday, {}, checked_value = true %>
+    <%= availability.check_box :thursday, {}, true, false  %>
     <%= availability.label :friday %>
-    <%= availability.hidden_field :friday %>
-    <%= availability.check_box :friday, {}, checked_value = true %>
+    <%= availability.check_box :friday, {}, true, false  %>
     <%= availability.label :saturday %>
-    <%= availability.hidden_field :saturday %>
-    <%= availability.check_box :saturday, {}, checked_value = true %>
+    <%= availability.check_box :saturday, {}, true, false  %>
     <%= availability.label :sunday %>
-    <%= availability.hidden_field :sunday %>
-    <%= availability.check_box :sunday, {}, checked_value = true %>
+    <%= availability.check_box :sunday, {}, true, false  %>
   <% end %>
 <br />
 

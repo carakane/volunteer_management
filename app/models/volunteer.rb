@@ -8,13 +8,16 @@ class Volunteer < ActiveRecord::Base
   validates :availability, presence: true
 
   def availability_attributes=(availability_attributes)
-    if self.availability.present?
-      availability = Availability.find_by(volunteer_id: self.id)
-      availability.update(availability_attributes)
-    else
-      availability = Availability.create(availability_attributes)
-      self.availability = availability
-    end
+    # if self.availability.present?
+    #   availability = Availability.find_by(volunteer_id: self.id)
+    #   availability.update(availability_attributes)
+    # else
+    #   availability = Availability.create(availability_attributes)
+    #   self.availability = availability
+    # end
+
+    availability = Availability.find_or_create_by(availability_attributes)
+    self.availability = availability
   end
 
   def skills_attributes=(skills_attributes)
