@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'active_model_serializers'
 gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
