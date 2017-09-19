@@ -31,6 +31,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    render json: @organization
     if @organization.user == @user
       @opportunities = @organization.opportunities
     else redirect_to '/'
