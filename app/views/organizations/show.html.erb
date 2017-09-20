@@ -14,22 +14,24 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  // debugger;
   var id = $("a[id^='id-']")[0]["id"].substring(3)
   var getting = $.get('/organizations/' + id + '.json');
   getting.done(function(data){
-    // debugger
       var html = data["name"];
       // var editButton = $('<br/><button type="button" id="edit-'+ data["id"] +'">Edit</>');
       var editButton = $('<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>')
       var deleteButton = $('<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>');
       var nextButton = $('<button type="button" id="next">Next</>')
 
-      // $.each(data["opportunities"], function(k, v) {
-      //   var opp = $('<%#= render(@opportunities) || "There are no opportunities at this organization" %>')
-      //   $("#opportunities").append(opp)
-      //
-      // })
+      $.each(data["opportunities"], function(k, v) {
+        debugger;
+        var status = 'Status: ' + v["status"]
+        var day = 'Day: ' + v["day"]
+        var name = v["name"]
+        var opp = '<a href="/opportunities/' + v["id"] + '">' + name + '</a>' + ' || ' + day + ' || ' + status + ' || ';
+        $("#opportunities").append(opp)
+
+      })
       $("#organization").append(html, editButton, deleteButton, nextButton)
   });
 })
