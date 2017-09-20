@@ -35,9 +35,12 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    render json: @organization
     if @organization.user == @user
       @opportunities = @organization.opportunities
+      respond_to do |f|
+        f.html { render :index }
+        f.json { render json: @organization }
+      end
     else redirect_to '/'
     end
   end

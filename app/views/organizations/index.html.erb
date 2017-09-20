@@ -1,7 +1,16 @@
 <h3>Your Organizations:</h3>
 <div id="organizations"></div>
-<!-- <% @organizations.each do |organization| %>
-  <%= link_to "#{organization.name}", organization_path(organization) %><br />
-<% end %> -->
 <br />
 <%= link_to "Create an Organization", new_organization_path %>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  var getting = $.get('/organizations.json');
+  getting.done(function(data){
+    $.each(data, function(k, v) {
+      var html = '<a href="/organizations/' + data[k]["id"] + '">' + data[k]["name"] + '</a><br />';
+      $("#organizations").append(html)
+    });
+  });
+})
+</script>
