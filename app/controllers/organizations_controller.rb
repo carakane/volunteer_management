@@ -38,7 +38,7 @@ class OrganizationsController < ApplicationController
     if @organization.user == @user
       @opportunities = @organization.opportunities
       respond_to do |f|
-        f.html { render :index }
+        f.html { render :show }
         f.json { render json: @organization }
       end
     else redirect_to '/'

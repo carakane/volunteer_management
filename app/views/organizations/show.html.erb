@@ -1,12 +1,33 @@
 <div id="organization"></div>
-<%= @organization.name %><br />
-<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>
-<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
+<!-- <%#= @organization.name %><br /> -->
+<!-- <%#= button_to "Edit", edit_organization_path(@organization), :method => 'get' %> -->
+<!-- <%#= button_to "Delete", organization_path(@organization), :method => 'delete' %> -->
 <br />
 
 <h4>Opportunities</h4>
+<div id="opportunities"></div>
 <%= render(@opportunities) || "There are no opportunities at this organization" %>
 <br />
 <br />
 
-<%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization) %>
+<%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization), id: "id-#{@organization.id}" %>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  // debugger;
+  var id = $("a[id^='id-']")[0]["id"].substring(3)
+  var getting = $.get('/organizations/' + id + '.json');
+  getting.done(function(data){
+    // debugger
+      var html = data["name"];
+      var editButton = $('<br/><button type="button" id="edit-'+ data["id"] +'">Edit</>');
+      var deleteButton = $('<button type="button" id="delete-'+ data["id"] +'">Delete</>');
+      var nextButton = $('<button type="button" id="next">Next</>')
+      $("#organization").append(html, editButton, deleteButton, nextButton)
+
+      // $.each(data["opportunities"], function(k, v) {
+      //
+      // })
+  });
+})
+</script>
