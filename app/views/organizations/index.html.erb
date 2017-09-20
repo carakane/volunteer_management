@@ -1,6 +1,7 @@
 <h3>Your Organizations:</h3>
-<% @organizations.each do |organization| %>
+<div id="organizations"></div>
+<!-- <% @organizations.each do |organization| %>
   <%= link_to "#{organization.name}", organization_path(organization) %><br />
-<% end %>
+<% end %> -->
 <br />
 <%= link_to "Create an Organization", new_organization_path %>

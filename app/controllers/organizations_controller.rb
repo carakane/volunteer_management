@@ -7,6 +7,10 @@ class OrganizationsController < ApplicationController
     if current_user.present?
       if current_user.has_organizations?
         @organizations = current_user.organizations
+        respond_to do |f|
+          f.html { render :index }
+          f.json { render json: @organizations }
+        end
       else
         flash[:notice] = "You have no organizations."
         redirect_to new_organization_path
