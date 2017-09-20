@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     #   f.html { render :show }
     #   f.json { render json: @opportunities }
     # end
-
-     render json: @opportunities
+    #
+    # #  render json: @opportunities
   end
 
 end
