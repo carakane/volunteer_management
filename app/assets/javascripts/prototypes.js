@@ -16,3 +16,8 @@ function Opportunity(id, name, day, status, organization) {
     return('<a href="/organizations/' + this.organization + '/opportunities/' + this.id + '">' + this.name + '</a>')
   }
 }
+
+function Volunteer(id, name) {
+  this.id = id;
+  this.name = name;
+}

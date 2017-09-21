@@ -23,6 +23,10 @@ class VolunteersController < ApplicationController
 
   def show
     @opportunities = @volunteer.opportunities
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @volunteer }
+    end
   end
 
   def edit
