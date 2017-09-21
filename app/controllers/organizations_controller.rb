@@ -29,7 +29,8 @@ class OrganizationsController < ApplicationController
 
     if @organization.save
       flash[:notice] = "You have created #{@organization.name}."
-      redirect_to organization_path(@organization)
+      # redirect_to organization_path(@organization)
+      render json: @organization, status: 201
     else render :new
     end
   end
