@@ -16,8 +16,10 @@ Sunday: <%#= yesno(@volunteer.availability.sunday) %>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  var id = window.location.pathname.substring(12)
+  // var id = window.location.pathname.substring(12)
     $("#next").click(function(){
+      var id = document.getElementById("next").getAttribute("volunteer")
+      // debugger;
       var newId = parseInt(id)
       var nextId = newId += 1
       var getting = $.get('/volunteers/' + newId + '.json');
@@ -26,7 +28,7 @@ $(function () {
       })
     });
 
-  loadVol(id)
+  loadVol(window.location.pathname.substring(12))
 })
 
 function loadVol(id) {
