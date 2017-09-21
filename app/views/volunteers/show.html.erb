@@ -1,9 +1,8 @@
-<h3 id="name">Name: <%#= @volunteer.name %></h3><br />
-<h4 id="skils">Skills:<%#= render 'skills', skills: @volunteer.skills %> </h4><br />
-<%#= render(@opportunities) || "Not Yet Assigned to Any Opportunities" %>
+<h3>Name:</h3><h3 id="name"></h3><br />
+<h4>Skills:</h4><span id="skils"></span><br />
+<h4>Opportunities:</h4><span id="opportunities"> </span><br />
 
 <h4>Available?</h4>
-<div id="availability">
 <strong>Monday:</strong><span id="monday"> </span>
 <strong>Tuesday:</strong><span id="tuesday"> </span>
 <strong>Wednesday:</strong><span id="wednesday"> </span><br />
@@ -11,7 +10,6 @@
 <strong>Friday:</strong><span id="friday"> </span>
 <strong>Saturday:</strong><span id="saturday"> </span>
 <strong>Sunday:</strong><span id="sunday"> </span>
-</div>
 
 <div id="buttons"></div>
 <button type="button" id="next" volunteer="">Next Volunteer</button>
@@ -23,6 +21,7 @@ $(function () {
       var newId = parseInt(id) + 1
       var getting = $.get('/volunteers/' + newId + '.json');
       getting.done(function(data){
+        $("#opportunities").empty()
         loadVol(data["id"])
       }).fail(function(data) {
         loadVol(1)
@@ -36,10 +35,16 @@ function loadVol(id) {
   document.getElementById("next").setAttribute("volunteer", id)
   var getting = $.get('/volunteers/' + id + '.json');
   getting.done(function(data){
-    // debugger;
     var vol = new Volunteer(data["id"], data["name"])
     var editButton = $('<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>')
     var deleteButton = $('<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete' %>')
+
+    $.each(data.opportunities, function(k, v) {
+      // debugger;
+      var opp = new Opportunity(v["id"], v["name"], v["day"], v["status"])
+      var html = opp.url()  + ' || Day: ' + opp.day  + ' || Status: ' + opp.status + '<br />'
+      $("#opportunities").append(html)
+    })
 
     var availability = new Availability(data.availability["id"], data.availability["volunteer_id"], data.availability["monday"], data.availability["tuesday"], data.availability["wednesday"], data.availability["thursday"], data.availability["friday"], data.availability["saturday"], data.availability["sunday"])
     $("#monday").text(availability.monday)
@@ -50,7 +55,7 @@ function loadVol(id) {
     $("#saturday").text(availability.saturday)
     $("#sunday").text(availability.sunday)
 
-    $("#name").text('Name: ' + vol["name"])
+    $("#name").text(vol["name"])
     $("#buttons").empty()
     $("#buttons").append(editButton, deleteButton)
 

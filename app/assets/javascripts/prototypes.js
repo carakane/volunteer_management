@@ -41,3 +41,7 @@ function Availability(id, volunteer_id, monday, tuesday, wednesday, thursday, fr
   this.saturday = dayAvailable(saturday);
   this.sunday = dayAvailable(sunday);
 }
+//
+// function VolunteerSkills(id, volunteer_id, :name) {
+//
+// }
