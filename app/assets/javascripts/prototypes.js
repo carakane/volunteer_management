@@ -21,3 +21,23 @@ function Volunteer(id, name) {
   this.id = id;
   this.name = name;
 }
+
+function Availability(id, volunteer_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) {
+  this.id = id;
+  this.volunteer_id = volunteer_id;
+
+  function dayAvailable(day) {
+    if (day === true) {
+      return("Yes")
+    } else {
+      return("No")
+  }};
+
+  this.monday = dayAvailable(monday)
+  this.tuesday = dayAvailable(tuesday);
+  this.wednesday = dayAvailable(wednesday);
+  this.thursday = dayAvailable(thursday);
+  this.friday = dayAvailable(friday);
+  this.saturday = dayAvailable(saturday);
+  this.sunday = dayAvailable(sunday);
+}

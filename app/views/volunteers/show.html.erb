@@ -3,13 +3,15 @@
 <%#= render(@opportunities) || "Not Yet Assigned to Any Opportunities" %>
 
 <h4>Available?</h4>
-Monday: <%#= yesno(@volunteer.availability.monday) %><br />
-Tuesday: <%#= yesno(@volunteer.availability.tuesday) %><br />
-Wednesday: <%#= yesno(@volunteer.availability.wednesday) %><br />
-Thursday: <%#= yesno(@volunteer.availability.thursday) %><br />
-Friday: <%#= yesno(@volunteer.availability.friday) %><br />
-Saturday: <%#= yesno(@volunteer.availability.saturday) %><br />
-Sunday: <%#= yesno(@volunteer.availability.sunday) %>
+<div id="availability">
+<strong>Monday:</strong><span id="monday"> </span>
+<strong>Tuesday:</strong><span id="tuesday"> </span>
+<strong>Wednesday:</strong><span id="wednesday"> </span><br />
+<strong>Thursday:</strong><span id="thursday"> </span>
+<strong>Friday:</strong><span id="friday"> </span>
+<strong>Saturday:</strong><span id="saturday"> </span>
+<strong>Sunday:</strong><span id="sunday"> </span>
+</div>
 
 <div id="buttons"></div>
 <button type="button" id="next" volunteer="">Next Volunteer</button>
@@ -34,9 +36,20 @@ function loadVol(id) {
   document.getElementById("next").setAttribute("volunteer", id)
   var getting = $.get('/volunteers/' + id + '.json');
   getting.done(function(data){
+    // debugger;
     var vol = new Volunteer(data["id"], data["name"])
     var editButton = $('<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>')
     var deleteButton = $('<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete' %>')
+
+    var availability = new Availability(data.availability["id"], data.availability["volunteer_id"], data.availability["monday"], data.availability["tuesday"], data.availability["wednesday"], data.availability["thursday"], data.availability["friday"], data.availability["saturday"], data.availability["sunday"])
+    $("#monday").text(availability.monday)
+    $("#tuesday").text(availability.tuesday)
+    $("#wednesday").text(availability.wednesday)
+    $("#thursday").text(availability.thursday)
+    $("#friday").text(availability.friday)
+    $("#saturday").text(availability.saturday)
+    $("#sunday").text(availability.sunday)
+
     $("#name").text('Name: ' + vol["name"])
     $("#buttons").empty()
     $("#buttons").append(editButton, deleteButton)
