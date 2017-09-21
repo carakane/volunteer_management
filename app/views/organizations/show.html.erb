@@ -18,17 +18,15 @@ $(function () {
   var getting = $.get('/organizations/' + id + '.json');
   getting.done(function(data){
       var org = new Organization(data["id"], data["name"]);
-      // var editButton = $('<br/><button type="button" id="edit-'+ data["id"] +'">Edit</>');
       var editButton = $('<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>')
       var deleteButton = $('<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>');
-      // var nextButton = $('<button type="button" id="next">Next</>')
 
       $.each(data["opportunities"], function(k, v) {
         var opp = new Opportunity(v["id"], v["name"], v["day"], v["status"], org["id"])
         var html = opp.url()  + ' || Day: ' + opp.day  + ' || Status: ' + opp.status + '<br />'
         $("#opportunities").append(html)
       })
-      $("#organization").append(org["name"], editButton, deleteButton, nextButton)
+      $("#organization").append(org["name"], editButton, deleteButton)
   });
 })
 </script>
