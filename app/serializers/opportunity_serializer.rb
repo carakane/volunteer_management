@@ -1,5 +1,5 @@
 class OpportunitySerializer < ActiveModel::Serializer
-  attributes :id, :status, :day, :name
+  attributes :id, :name, :day, :status
   belongs_to :organization
   belongs_to :volunteer
 end
