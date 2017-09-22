@@ -20,18 +20,26 @@
 <script type="text/javascript" charset="utf-8">
 $(function () {
     $("#next").click(function(){
-      debugger;
+      var volunteers = $.get('/volunteers.json');
+      var nextVol;
+    volunteers.done(function(data){
       var id = document.getElementById("next").getAttribute("volunteer")
-      var newId = parseInt(id) + 1
-      var getting = $.get('/volunteers/' + newId + '.json');
-      getting.done(function(data){
-        $("#opportunities").empty()
-        loadVol(data["id"])
-      }).fail(function(data) {
-        var nextId = newId + 1
-        loadVol(nextId)
-      });
+      for(i = 0; i< data.length; i++) {
+        if (data[i]["id"] === parseInt(id)) {
+          if (data[parseInt(`${i+1}`)]){
+            nextVol = data[parseInt(`${i+1}`)]["id"]
+            var getting = $.get('/volunteers/' + nextVol + '.json');
+            getting.done(function(data){
+              $("#opportunities").empty()
+              loadVol(data["id"])
+            })
+          } else {
+            $("#next").prop('disabled', true);
+          }
+        }
+      }
     });
+  });
 
     $("#previous").click(function(){
       var id = document.getElementById("previous").getAttribute("volunteer")
