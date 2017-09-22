@@ -4,15 +4,15 @@ class VolunteersController < ApplicationController
 
   def index
     @volunteers = Volunteer.all
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @volunteers }
+    end
   end
 
   def new
     @volunteer = Volunteer.new
     @availability = @volunteer.build_availability
-    # respond_to do |f|
-    #   f.html { render :show }
-    #   f.json { render json: @volunteer }
-    # end
   end
 
   def create
