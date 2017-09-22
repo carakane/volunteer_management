@@ -22,38 +22,48 @@ $(function () {
     $("#next").click(function(){
       var volunteers = $.get('/volunteers.json');
       var nextVol;
-    volunteers.done(function(data){
-      var id = document.getElementById("next").getAttribute("volunteer")
-      for(i = 0; i< data.length; i++) {
-        if (data[i]["id"] === parseInt(id)) {
-          if (data[parseInt(`${i+1}`)]){
-            nextVol = data[parseInt(`${i+1}`)]["id"]
-            var getting = $.get('/volunteers/' + nextVol + '.json');
-            getting.done(function(data){
-              $("#opportunities").empty()
-              loadVol(data["id"])
-            })
-          } else {
-            $("#next").prop('disabled', true);
+      volunteers.done(function(data){
+        var id = document.getElementById("next").getAttribute("volunteer")
+        for(i = 0; i< data.length; i++) {
+          if (data[i]["id"] === parseInt(id)) {
+            if (data[parseInt(`${i+1}`)]){
+              nextVol = data[parseInt(`${i+1}`)]["id"]
+              var getting = $.get('/volunteers/' + nextVol + '.json');
+              getting.done(function(data){
+                $("#previous").prop("disabled", false)
+                $("#opportunities").empty()
+                loadVol(data["id"])
+              })
+            } else {
+              $("#next").prop('disabled', true);
+            }
           }
         }
-      }
-    });
-  });
-
-    $("#previous").click(function(){
-      var id = document.getElementById("previous").getAttribute("volunteer")
-      var newId = parseInt(id) - 1
-      var getting = $.get('/volunteers/' + newId + '.json');
-      getting.done(function(data){
-        $("#opportunities").empty()
-        loadVol(data["id"])
-      }).fail(function(data) {
-        var previousId = newId - 1
-        loadVol(previousId)
       });
     });
 
+    $("#previous").click(function(){
+      var volunteers = $.get('/volunteers.json');
+      var previousVol;
+      volunteers.done(function(data){
+        var id = document.getElementById("previous").getAttribute("volunteer")
+        for(i = 0; i< data.length; i++) {
+          if (data[i]["id"] === parseInt(id)) {
+            if (data[parseInt(`${i-1}`)]){
+              previousVol = data[parseInt(`${i-1}`)]["id"]
+              var getting = $.get('/volunteers/' + previousVol + '.json');
+              getting.done(function(data){
+                $("#next").prop("disabled", false)
+                $("#opportunities").empty()
+                loadVol(data["id"])
+              })
+            } else {
+              $("#previous").prop('disabled', true);
+            }
+          }
+        }
+      });
+    });
   loadVol(window.location.pathname.substring(12))
 })
 
