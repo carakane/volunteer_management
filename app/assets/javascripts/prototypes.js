@@ -20,6 +20,9 @@ function Opportunity(id, name, day, status, organization) {
 function Volunteer(id, name) {
   this.id = id;
   this.name = name;
+  this.url = function toUrl() {
+    return('<a href="/volunteers/' + this.id + '">' + this.name + '</a><br />');
+  }
 }
 
 function Availability(id, volunteer_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) {

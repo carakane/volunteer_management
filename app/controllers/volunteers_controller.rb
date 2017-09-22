@@ -9,6 +9,10 @@ class VolunteersController < ApplicationController
   def new
     @volunteer = Volunteer.new
     @availability = @volunteer.build_availability
+    # respond_to do |f|
+    #   f.html { render :show }
+    #   f.json { render json: @volunteer }
+    # end
   end
 
   def create
@@ -16,7 +20,9 @@ class VolunteersController < ApplicationController
 
     if @volunteer.save
       flash[:notice] = "You have created #{@volunteer.name}."
-      redirect_to volunteer_path(@volunteer)
+      # redirect_to volunteer_path(@volunteer)
+      render json: @volunteer, status: 201
+
     else render :new
     end
   end
@@ -31,10 +37,6 @@ class VolunteersController < ApplicationController
 
   def edit
     @availability = @volunteer.availability
-    # respond_to do |f|
-    #   f.html { render :show }
-    #   f.json { render json: @volunteer }
-    # end
   end
 
   def update
