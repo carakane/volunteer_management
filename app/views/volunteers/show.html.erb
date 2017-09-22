@@ -12,6 +12,8 @@
 <strong>Sunday:</strong><span id="sunday"> </span>
 
 <div id="buttons"></div>
+<button type="button" id="edit" volunteer="">Edit Volunteer</button>
+<button type="button" id="delete" volunteer="">Delete Volunteer</button>
 <button type="button" id="next" volunteer="">Next Volunteer</button>
 
 <script type="text/javascript" charset="utf-8">
@@ -28,6 +30,24 @@ $(function () {
       });
     });
 
+    $("#edit").click(function(){
+      var id = document.getElementById("next").getAttribute("volunteer")
+      var getting = $.get('/volunteers/' + id + '.json/edit');
+      getting.done(function(data){
+        debugger;
+      });
+    });
+
+    $("#delete").click(function(){
+      var id = document.getElementById("next").getAttribute("volunteer")
+      var getting = $.get('/volunteers/' + id + '.json/destroy');
+      getting.done(function(data){
+        debugger;
+    });
+  });
+
+
+
   loadVol(window.location.pathname.substring(12))
 })
 
@@ -36,8 +56,6 @@ function loadVol(id) {
   var getting = $.get('/volunteers/' + id + '.json');
   getting.done(function(data){
     var vol = new Volunteer(data["id"], data["name"])
-    var editButton = $('<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>')
-    var deleteButton = $('<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete' %>')
 
     $.each(data.opportunities, function(k, v) {
       // debugger;
@@ -56,9 +74,6 @@ function loadVol(id) {
     $("#sunday").text(availability.sunday)
 
     $("#name").text(vol["name"])
-    $("#buttons").empty()
-    $("#buttons").append(editButton, deleteButton)
-
     })
 };
 
