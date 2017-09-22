@@ -2,14 +2,19 @@
 
 <%= render 'form', volunteer: @volunteer %>
 
+<br />
+<div id="volunteer"></div><br />
+<div id="availability"></div><br />
+
+
 <script type="text/javascript" charset="utf-8">
   $(function () {
     $('form').submit(function(event) {
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/volunteers', values);
+      this.reset();
       posting.done(function(data) {
-        debugger
         var volunteer = new Volunteer(data["id"], data["name"]);
 
         var availability = new Availability(data.availability["id"], data.availability["volunteer_id"], data.availability["monday"], data.availability["tuesday"], data.availability["wednesday"], data.availability["thursday"], data.availability["friday"], data.availability["saturday"], data.availability["sunday"])
@@ -21,6 +26,7 @@
         $("#saturday").text(availability.saturday)
         $("#sunday").text(availability.sunday)
 
+        debugger
 
         $("#volunteer").append(volunteer.url())
       });
