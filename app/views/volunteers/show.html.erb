@@ -12,8 +12,10 @@
 <strong>Sunday:</strong><span id="sunday"> </span>
 
 <div id="buttons"></div>
-<button type="button" id="edit" volunteer="">Edit Volunteer</button>
-<button type="button" id="delete" volunteer="">Delete Volunteer</button>
+<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get', :id => 'edit' %>
+<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete', :id => 'delete', data: {confirm: "Are you sure?"} %>
+<!-- <button type="button" id="edit" volunteer="">Edit Volunteer</button>
+<button type="button" id="delete" volunteer="">Delete Volunteer</button> -->
 <button type="button" id="next" volunteer="">Next Volunteer</button>
 
 <script type="text/javascript" charset="utf-8">
@@ -29,30 +31,15 @@ $(function () {
         loadVol(1)
       });
     });
-
-    $("#edit").click(function(){
-      var id = document.getElementById("next").getAttribute("volunteer")
-      var getting = $.get('/volunteers/' + id + '.json/edit');
-      getting.done(function(data){
-        debugger;
-      });
-    });
-
-    $("#delete").click(function(){
-      var id = document.getElementById("next").getAttribute("volunteer")
-      var getting = $.get('/volunteers/' + id + '.json/destroy');
-      getting.done(function(data){
-        debugger;
-    });
-  });
-
-
-
   loadVol(window.location.pathname.substring(12))
 })
 
 function loadVol(id) {
-  document.getElementById("next").setAttribute("volunteer", id)
+  $("#next").attr({"volunteer": id})
+  document.getElementsByTagName("form")[0]["action"] = '/volunteers/'+ id +'/edit'
+  document.getElementsByTagName("form")[1]["action"] = '/volunteers/'+ id
+  // debugger;
+
   var getting = $.get('/volunteers/' + id + '.json');
   getting.done(function(data){
     var vol = new Volunteer(data["id"], data["name"])

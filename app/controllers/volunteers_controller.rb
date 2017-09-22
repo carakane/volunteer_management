@@ -31,6 +31,10 @@ class VolunteersController < ApplicationController
 
   def edit
     @availability = @volunteer.availability
+    # respond_to do |f|
+    #   f.html { render :show }
+    #   f.json { render json: @volunteer }
+    # end
   end
 
   def update
