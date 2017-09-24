@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>VolunteerManager</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%# binding.pry %>
   <% if File.exist?("app/assets/javascripts/#{params[:controller]}_#{params[:action]}.js") %>
     <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}" %>

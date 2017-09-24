@@ -22,8 +22,8 @@ var ready = function () {
 };
 
 $(document).ready(ready);
-$(document).on('turbolinks:load', function() {;
-  if($(".volunteers.new").length > 0) {
-    ready();
-  }
-})
+// $(document).on('turbolinks:load', function() {;
+//   if($(".volunteers.new").length > 0) {
+//     ready();
+//   }
+// })

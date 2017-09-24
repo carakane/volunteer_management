@@ -89,8 +89,9 @@ loadVol(window.location.pathname.substring(12))
 }
 
 $(document).ready(ready);
-$(document).on('turbolinks:load', function() {;
-  if($(".volunteers.show").length > 0) {
-    ready();
-  }
-})
+// $(document).on('turbolinks:load', function() {;
+//   // debugger;
+//   if($(".volunteers.show").length > 0) {
+//     ready();
+//   }
+// })
