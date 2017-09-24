@@ -11,22 +11,3 @@
 <br />
 
 <%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization), id: "id-#{@organization.id}" %>
-
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  var id = $("a[id^='id-']")[0]["id"].substring(3)
-  var getting = $.get('/organizations/' + id + '.json');
-  getting.done(function(data){
-      var org = new Organization(data["id"], data["name"]);
-      var editButton = $('<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>')
-      var deleteButton = $('<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>');
-
-      $.each(data["opportunities"], function(k, v) {
-        var opp = new Opportunity(v["id"], v["name"], v["day"], v["status"], org["id"])
-        var html = opp.url()  + ' || Day: ' + opp.day  + ' || Status: ' + opp.status + '<br />'
-        $("#opportunities").append(html)
-      })
-      $("#organization").append(org["name"], editButton, deleteButton)
-  });
-})
-</script>
