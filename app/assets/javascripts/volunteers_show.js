@@ -3,7 +3,6 @@ function loadVol(id) {
   $("#previous").attr({"volunteer": id})
   document.getElementsByTagName("form")[0]["action"] = '/volunteers/'+ id +'/edit'
   document.getElementsByTagName("form")[1]["action"] = '/volunteers/'+ id
-  // debugger;
 
   var getting = $.get('/volunteers/' + id + '.json');
   getting.done(function(data){
