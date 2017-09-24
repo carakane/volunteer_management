@@ -1,13 +1,13 @@
 var ready = function () {
   var getting = $.get('/organizations' + '.json');
   getting.done(function(data){
+    $("#organizations").empty();
     $.each(data, function(k, v) {
       var org = new Organization(v["id"], v["name"])
       $("#organizations").append(org.url())
     });
   });
 }
-
 
 $(document).ready(ready);
 $(document).on('turbolinks:load', function() {;
