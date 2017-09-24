@@ -12,7 +12,7 @@
 <strong>Sunday:</strong><span id="sunday"> </span>
 
 <div id="buttons"></div>
-<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get' %>
-<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete', data: {confirm: "Are you sure?"} %>
+<%= button_to "Edit", edit_volunteer_path(@volunteer), :method => 'get', :id => 'edit' %>
+<%= button_to "Delete", volunteer_path(@volunteer), :method => 'delete', :id => 'delete', data: {confirm: "Are you sure?"} %>
 <button type="button" id="previous" volunteer="">Previous Volunteer</button>
 <button type="button" id="next" volunteer="">Next Volunteer</button>

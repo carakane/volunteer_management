@@ -5,7 +5,7 @@ class VolunteersController < ApplicationController
   def index
     @volunteers = Volunteer.all
     respond_to do |f|
-      f.html { render :index }
+      f.html { render :show }
       f.json { render json: @volunteers }
     end
   end
