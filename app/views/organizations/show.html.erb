@@ -9,7 +9,7 @@
 <%#= render(@opportunities) || "There are no opportunities at this organization" %>
 <br />
 <br />
-var editButton = $('<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>');
-var deleteButton = $('<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>');
+<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>
+<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
 
 <%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization), id: "id-#{@organization.id}" %>
