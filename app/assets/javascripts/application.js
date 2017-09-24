@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require prototypes
+//= require organizations_index
+//= require organizations_new
+//= require organizations_show
+//= require volunteers_new
+//= require volunteers_show
