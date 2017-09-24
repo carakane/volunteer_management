@@ -70,8 +70,7 @@
           }
         });
       });
-    loadVol(window.location.pathname.substring(12))
-  })
+
 
   function loadVol(id) {
     $("#next").attr({"volunteer": id})
@@ -103,3 +102,5 @@
       $("#name").text(vol["name"])
       })
   };
+  loadVol(window.location.pathname.substring(12))
+})
