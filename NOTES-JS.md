@@ -3,3 +3,5 @@
 2) skills need to be rendered on vol show
 
 <!-- 3) figure out placement of js -->
+
+<!-- 4) fix organizations link in footer, goes to /organizations/.json instead of /organizations.json -->

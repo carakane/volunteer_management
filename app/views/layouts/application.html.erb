@@ -5,7 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%# binding.pry %>
-  <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}"  %>
+  <% if File.exist?("app/assets/javascripts/#{params[:controller]}_#{params[:action]}.js") %>
+    <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}" %>
+  <% end %>
   <%= csrf_meta_tags %>
   <style>
   header {
