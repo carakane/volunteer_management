@@ -2,4 +2,4 @@
 
 2) skills need to be rendered on vol show
 
-3) figure out placement of js
+<!-- 3) figure out placement of js -->
