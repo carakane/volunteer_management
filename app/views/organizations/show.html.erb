@@ -1,15 +1,11 @@
-<div id="organization"></div>
-<!-- <%#= @organization.name %><br /> -->
-<!-- <%#= button_to "Edit", edit_organization_path(@organization), :method => 'get' %> -->
-<!-- <%#= button_to "Delete", organization_path(@organization), :method => 'delete' %> -->
+<%= @organization.name %><br />
+<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>
+<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
 <br />
 
 <h4>Opportunities</h4>
-<div id="opportunities"></div>
-<%#= render(@opportunities) || "There are no opportunities at this organization" %>
+<%= render(@opportunities) || "There are no opportunities at this organization" %>
 <br />
 <br />
-<%= button_to "Edit", edit_organization_path(@organization), :method => 'get' %>
-<%= button_to "Delete", organization_path(@organization), :method => 'delete' %>
 
-<%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization), id: "id-#{@organization.id}" %>
+<%= link_to "Create an Opportunity at #{@organization.name}", new_organization_opportunity_path(@organization) %>

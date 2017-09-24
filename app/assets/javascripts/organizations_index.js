@@ -1,5 +1,4 @@
 var ready = function () {
-  debugger;
   var getting = $.get('/organizations' + '.json');
   getting.done(function(data){
     $.each(data, function(k, v) {
