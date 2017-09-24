@@ -2,15 +2,3 @@
 <div id="organizations"></div>
 <br />
 <%= link_to "Create an Organization", new_organization_path %>
-
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  var getting = $.get('/organizations.json');
-  getting.done(function(data){
-    $.each(data, function(k, v) {
-      var org = new Organization(v["id"], v["name"])
-      $("#organizations").append(org.url())
-    });
-  });
-})
-</script>
