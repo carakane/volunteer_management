@@ -9,8 +9,15 @@ function loadVol(id) {
   getting.done(function(data){
     var vol = new Volunteer(data["id"], data["name"])
 
+    $("#skills").empty()
+    $.each(data.skills, function(k, v) {
+      var skill = new Skill(v["id"], v["name"])
+      var html = skill.name
+      $("#skills").append(html)
+    })
+
+    $("#opportunities").empty()
     $.each(data.opportunities, function(k, v) {
-      // debugger;
       var opp = new Opportunity(v["id"], v["name"], v["day"], v["status"])
       var html = opp.url()  + ' || Day: ' + opp.day  + ' || Status: ' + opp.status + '<br />'
       $("#opportunities").append(html)
