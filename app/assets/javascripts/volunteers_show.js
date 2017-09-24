@@ -1,5 +1,5 @@
-$(".volunteers.show").load(function () {
-$(".show").ready(function () {
+$(".volunteers.show").ready(function () {
+
     $("#next").click(function(){
       var volunteers = $.get('/volunteers.json');
       var nextVol;
@@ -78,5 +78,4 @@ $(".show").ready(function () {
 
 
 loadVol(window.location.pathname.substring(12))
-})
 })

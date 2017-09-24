@@ -1,5 +1,4 @@
-$(".volunteers.new").load(function () {
-  debugger
+$(".volunteers.new").ready(function () {
   $(".new").ready(function () {
   $('form').submit(function(event) {
     event.preventDefault();

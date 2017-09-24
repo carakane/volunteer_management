@@ -3,9 +3,9 @@
 <head>
   <title>VolunteerManager</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%# binding.pry %>
-  <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}" %>
+  <%= javascript_include_tag "#{params[:controller]}_#{params[:action]}", 'data-turbolinks-track' => false  %>
   <%= csrf_meta_tags %>
   <style>
   header {
@@ -28,7 +28,7 @@
   }
   </style>
 </head>
-<body class="<%= controller_name %> <%= action_name %>" id="<%= current_user.id %>">
+<body class="<%= controller_name %> <%= action_name %>">
 
   <%= render 'layouts/header' %>
   <%= render 'layouts/flash' %>
