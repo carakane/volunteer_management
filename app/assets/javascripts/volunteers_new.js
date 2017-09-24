@@ -1,5 +1,4 @@
-$(".volunteers.new").ready(function () {
-  $(".new").ready(function () {
+var ready = function () {
   $('form').submit(function(event) {
     event.preventDefault();
     var values = $(this).serialize();
@@ -19,6 +18,12 @@ $(".volunteers.new").ready(function () {
 
       $("#volunteer").append(volunteer.url())
     });
-  });
 });
-});
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', function() {;
+  if($(".volunteers.new").length > 0) {
+    ready();
+  }
+})

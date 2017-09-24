@@ -1,4 +1,4 @@
-$(".organizations.new").ready(function () {
+var ready = function () {
   $('form').submit(function(event) {
     event.preventDefault();
     var values = $(this).serialize();
@@ -9,4 +9,11 @@ $(".organizations.new").ready(function () {
       $("#organization").append(organization.url())
     });
   });
-});
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', function() {;
+  if($(".organizations.new").length > 0) {
+    ready();
+  }
+})

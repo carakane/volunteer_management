@@ -1,4 +1,4 @@
-$(".organizations.show").ready(function () {
+var ready = function () {
   var id = window.location.pathname.substring(15);
   var getting = $.get('/organizations/' + id + '.json');
   getting.done(function(data){
@@ -10,4 +10,11 @@ $(".organizations.show").ready(function () {
         $("#opportunities").append(html);
       })
   });
+}
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', function() {;
+  if($(".organizations.show").length > 0) {
+    ready();
+  }
 })

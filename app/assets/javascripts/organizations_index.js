@@ -1,4 +1,4 @@
-$(".organizations.index").ready(function () {
+var ready = function () {
   var getting = $.get('/organizations.json');
   getting.done(function(data){
     $.each(data, function(k, v) {
@@ -6,4 +6,12 @@ $(".organizations.index").ready(function () {
       $("#organizations").append(org.url())
     });
   });
+}
+
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', function() {;
+  if($(".organizations.index").length > 0) {
+    ready();
+  }
 })
