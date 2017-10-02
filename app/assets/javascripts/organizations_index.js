@@ -1,17 +1,37 @@
-var ready = function () {
-  var getting = $.get('/organizations' + '.json');
-  getting.done(function(data){
-    $("#organizations").empty();
-    $.each(data, function(k, v) {
-      var org = new Organization(v["id"], v["name"])
-      $("#organizations").append(org.url())
-    });
-  });
+const OrganizationService = {
+  fetchAll() {
+    $.get('/organizations' + '.json')
+      .done(organizations => {
+        $("#organizations").empty();
+        this.sortAndRender(organizations)
+      });
+  },
+
+  createAndRender(organization) {
+    var org = new Organization(organization.id, organization.name)
+    $("#organizations").append(org.url())
+  },
+
+  sortAndRender(organizations) {
+     organizations
+      .sort(sortByName)
+      .forEach(this.createAndRender)
+  }
 }
 
-$(document).ready(ready);
-// $(document).on('turbolinks:load', function() {;
-//   if($(".organizations.index").length > 0) {
-//     ready();
-//   }
-// })
+function sortByName(a, b) {
+ var nameA = a.name.toUpperCase();
+ var nameB = b.name.toUpperCase();
+ if (nameA < nameB) {
+   return -1;
+ }
+ if (nameA > nameB) {
+   return 1;
+ }
+
+ return 0;
+}
+
+$(document).ready(function(){
+  OrganizationService.fetchAll()
+});
