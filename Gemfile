@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rails_12factor'
 gem 'active_model_serializers'
 gem 'pry'
 gem 'pg', '~> 0.18.4'
