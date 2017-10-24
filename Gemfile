@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 gem 'active_model_serializers'
 gem 'pry'
 gem 'pg'
+gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
