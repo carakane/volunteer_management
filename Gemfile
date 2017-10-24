@@ -4,6 +4,7 @@ gem 'rails_12factor'
 gem 'active_model_serializers'
 gem 'pry'
 gem 'pg', '~> 0.18.4'
+gem 'sprockets-rails', '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
