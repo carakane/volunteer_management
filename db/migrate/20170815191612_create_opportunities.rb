@@ -4,7 +4,8 @@ class CreateOpportunities < ActiveRecord::Migration
       t.string :name
       t.integer :organization_id
       t.integer :volunteer_id
-      t.string :status
+      t.integer :status, default: 0
+      t.integer :day, default: 0
       t.timestamps null: false
     end
   end
