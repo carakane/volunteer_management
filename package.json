@@ -1,0 +1,28 @@
+{
+  "name": "volunteer_manager",
+  "version": "1.0.0",
+  "description": "This application allows you to control the assignment and creation of volunteer opportunities at your organization. After signing in via the application or via Facebook, add your organizations and their opportunities. You will be able to see all available volunteers and assign them to your opportunity. Your organizations and opportunities can be edited or deleted at any time. Enjoy!",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carakane/volunteer_manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carakane/volunteer_manager/issues"
+  },
+  "homepage": "https://github.com/carakane/volunteer_manager#readme"
+}
