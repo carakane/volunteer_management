@@ -1,5 +1,8 @@
 {
   "presets": [
     "env", {"targets": {"uglify": true}}
+  ],
+  "plugins": [
+    "transform-es2015-shorthand-properties"
   ]
 }
