@@ -4,6 +4,8 @@ gem 'pry'
 gem 'pg'
 gem 'puma'
 gem 'rails_12factor'
+gem "sprockets"
+gem "sprockets-es6"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
